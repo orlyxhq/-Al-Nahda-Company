@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { PRODUCTS, PRODUCT_CATEGORIES } from "@/lib/data";
+import { PRODUCTS, PRODUCT_CATEGORIES, type Product } from "@/lib/data";
 
 export const Route = createFileRoute("/products/$category/$id")({
   head: ({ params }) => {
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/products/$category/$id")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }): { product: Product } => {
     const product = PRODUCTS.find((x) => x.id === params.id && x.category === params.category);
     if (!product) throw notFound();
     return { product };
