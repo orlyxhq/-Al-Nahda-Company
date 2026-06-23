@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ARTICLES } from "@/lib/data";
+import { ARTICLES, type Article } from "@/lib/data";
 
 export const Route = createFileRoute("/knowledge/$id")({
   head: ({ params }) => {
@@ -20,7 +20,8 @@ export const Route = createFileRoute("/knowledge/$id")({
 });
 
 function ArticleDetail() {
-  const { article } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { article: Article };
+  const article = data.article;
   const related = ARTICLES.filter((a) => a.id !== article.id).slice(0, 3);
 
   return (

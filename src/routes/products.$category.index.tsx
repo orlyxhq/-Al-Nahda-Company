@@ -27,7 +27,8 @@ export const Route = createFileRoute("/products/$category/")({
 });
 
 function CategoryPage() {
-  const { cat } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { cat: (typeof PRODUCT_CATEGORIES)[number] };
+  const cat = data.cat;
   const category = cat.slug as ProductCategory;
   const items = PRODUCTS.filter((p) => p.category === category);
 
