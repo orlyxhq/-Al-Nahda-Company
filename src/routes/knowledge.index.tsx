@@ -1,11 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ARTICLES } from "@/lib/data";
+import { LazyImage } from "@/components/site/LazyImage";
 
 export const Route = createFileRoute("/knowledge/")({
   head: () => ({
     meta: [
       { title: "مركز المعرفة — زِراعة" },
-      { name: "description", content: "مقالات وأدلّة عملية في إدارة التربة والمياه والوقاية والإدارة الموسمية للمحاصيل." },
+      {
+        name: "description",
+        content:
+          "مقالات وأدلّة عملية في إدارة التربة والمياه والوقاية والإدارة الموسمية للمحاصيل.",
+      },
     ],
   }),
   component: KnowledgeIndex,
@@ -33,13 +38,24 @@ function KnowledgeIndex() {
         <Link
           to="/knowledge/$id"
           params={{ id: featured.id }}
-          className="group grid gap-8 overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-[1.2fr_1fr]"
+          className="group grid gap-0 overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-[1.2fr_1fr]"
         >
-          <div className="aspect-[4/3] bg-secondary ag-grain md:aspect-auto" />
+          <LazyImage
+            src={featured.cover}
+            alt={featured.title}
+            wrapperClassName="aspect-[4/3] md:aspect-auto md:h-full"
+            className="transition-transform duration-700 group-hover:scale-105"
+          />
           <div className="flex flex-col justify-center p-8 md:p-10">
-            <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold tracking-[0.18em] text-gold uppercase self-start">مقال مميّز</span>
-            <h2 className="display-2 mt-5 transition group-hover:text-primary">{featured.title}</h2>
-            <p className="mt-4 text-base leading-8 text-muted-foreground">{featured.excerpt}</p>
+            <span className="self-start rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gold">
+              مقال مميّز
+            </span>
+            <h2 className="display-2 mt-5 transition group-hover:text-primary">
+              {featured.title}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              {featured.excerpt}
+            </p>
             <div className="mt-6 flex items-center gap-3 text-xs text-muted-foreground">
               <span className="font-semibold text-foreground">{featured.author}</span>
               <span className="h-1 w-1 rounded-full bg-border-strong" />
@@ -58,17 +74,23 @@ function KnowledgeIndex() {
               params={{ id: a.id }}
               className="group flex flex-col"
             >
-              <div className="aspect-[5/4] overflow-hidden rounded-xl border border-border bg-secondary ag-grain">
-                <div className="flex h-full items-end p-5">
-                  <span className="rounded-md bg-background/90 px-3 py-1 text-xs font-semibold">{a.category}</span>
-                </div>
-              </div>
+              <LazyImage
+                src={a.image}
+                alt={a.title}
+                wrapperClassName="aspect-[5/4] rounded-xl border border-border"
+                className="transition-transform duration-700 group-hover:scale-105"
+              />
               <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
+                <span className="rounded-md bg-secondary px-2 py-1 font-semibold text-foreground">
+                  {a.category}
+                </span>
                 <span>{a.date}</span>
                 <span className="h-1 w-1 rounded-full bg-border-strong" />
                 <span>{a.readingTime}</span>
               </div>
-              <h3 className="mt-3 text-xl font-bold leading-snug transition group-hover:text-primary">{a.title}</h3>
+              <h3 className="mt-3 text-xl font-bold leading-snug transition group-hover:text-primary">
+                {a.title}
+              </h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{a.excerpt}</p>
               <p className="mt-4 text-xs font-semibold text-foreground/80">{a.author}</p>
             </Link>
