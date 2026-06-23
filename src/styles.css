@@ -177,14 +177,14 @@
   text-transform: uppercase;
   color: var(--color-primary);
   font-family: var(--font-sans);
-}
 
-@utility eyebrow::before {
-  content: "";
-  width: 1.75rem;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
+  &::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
 }
 
 @utility display-1 {
