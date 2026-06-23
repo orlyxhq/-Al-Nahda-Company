@@ -339,10 +339,14 @@ function KnowledgePreview() {
               params={{ id: a.id }}
               className="group flex flex-col"
             >
-              <div className="aspect-[5/4] overflow-hidden rounded-xl border border-border bg-secondary ag-grain">
-                <div className="flex h-full items-end p-6">
-                  <span className="rounded-md bg-background/90 px-3 py-1 text-xs font-semibold text-foreground">{a.category}</span>
-                </div>
+              <LazyImage
+                src={a.image}
+                alt={a.title}
+                wrapperClassName="aspect-[5/4] rounded-xl border border-border"
+                className="transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="mt-3">
+                <span className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold text-foreground">{a.category}</span>
               </div>
               <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
                 <span>{a.date}</span>
