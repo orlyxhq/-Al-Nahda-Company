@@ -9,38 +9,173 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as KnowledgeIndexRouteImport } from './routes/knowledge.index'
+import { Route as DiseasesIndexRouteImport } from './routes/diseases.index'
+import { Route as KnowledgeIdRouteImport } from './routes/knowledge.$id'
+import { Route as DiseasesIdRouteImport } from './routes/diseases.$id'
+import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
+import { Route as ProductsCategoryIdRouteImport } from './routes/products.$category.$id'
 
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeIndexRoute = KnowledgeIndexRouteImport.update({
+  id: '/knowledge/',
+  path: '/knowledge/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseasesIndexRoute = DiseasesIndexRouteImport.update({
+  id: '/diseases/',
+  path: '/diseases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeIdRoute = KnowledgeIdRouteImport.update({
+  id: '/knowledge/$id',
+  path: '/knowledge/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseasesIdRoute = DiseasesIdRouteImport.update({
+  id: '/diseases/$id',
+  path: '/diseases/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+  id: '/products/$category/',
+  path: '/products/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsCategoryIdRoute = ProductsCategoryIdRouteImport.update({
+  id: '/products/$category/$id',
+  path: '/products/$category/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/diseases/$id': typeof DiseasesIdRoute
+  '/knowledge/$id': typeof KnowledgeIdRoute
+  '/diseases/': typeof DiseasesIndexRoute
+  '/knowledge/': typeof KnowledgeIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/diseases/$id': typeof DiseasesIdRoute
+  '/knowledge/$id': typeof KnowledgeIdRoute
+  '/diseases': typeof DiseasesIndexRoute
+  '/knowledge': typeof KnowledgeIndexRoute
+  '/products': typeof ProductsIndexRoute
+  '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/products/$category': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/diseases/$id': typeof DiseasesIdRoute
+  '/knowledge/$id': typeof KnowledgeIdRoute
+  '/diseases/': typeof DiseasesIndexRoute
+  '/knowledge/': typeof KnowledgeIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/diseases/$id'
+    | '/knowledge/$id'
+    | '/diseases/'
+    | '/knowledge/'
+    | '/products/'
+    | '/products/$category/$id'
+    | '/products/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/diseases/$id'
+    | '/knowledge/$id'
+    | '/diseases'
+    | '/knowledge'
+    | '/products'
+    | '/products/$category/$id'
+    | '/products/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/diseases/$id'
+    | '/knowledge/$id'
+    | '/diseases/'
+    | '/knowledge/'
+    | '/products/'
+    | '/products/$category/$id'
+    | '/products/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DiseasesIdRoute: typeof DiseasesIdRoute
+  KnowledgeIdRoute: typeof KnowledgeIdRoute
+  DiseasesIndexRoute: typeof DiseasesIndexRoute
+  KnowledgeIndexRoute: typeof KnowledgeIndexRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
+  ProductsCategoryIdRoute: typeof ProductsCategoryIdRoute
+  ProductsCategoryIndexRoute: typeof ProductsCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +183,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge/': {
+      id: '/knowledge/'
+      path: '/knowledge'
+      fullPath: '/knowledge/'
+      preLoaderRoute: typeof KnowledgeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diseases/': {
+      id: '/diseases/'
+      path: '/diseases'
+      fullPath: '/diseases/'
+      preLoaderRoute: typeof DiseasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge/$id': {
+      id: '/knowledge/$id'
+      path: '/knowledge/$id'
+      fullPath: '/knowledge/$id'
+      preLoaderRoute: typeof KnowledgeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diseases/$id': {
+      id: '/diseases/$id'
+      path: '/diseases/$id'
+      fullPath: '/diseases/$id'
+      preLoaderRoute: typeof DiseasesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$category/': {
+      id: '/products/$category/'
+      path: '/products/$category'
+      fullPath: '/products/$category/'
+      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$category/$id': {
+      id: '/products/$category/$id'
+      path: '/products/$category/$id'
+      fullPath: '/products/$category/$id'
+      preLoaderRoute: typeof ProductsCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DiseasesIdRoute: DiseasesIdRoute,
+  KnowledgeIdRoute: KnowledgeIdRoute,
+  DiseasesIndexRoute: DiseasesIndexRoute,
+  KnowledgeIndexRoute: KnowledgeIndexRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
+  ProductsCategoryIdRoute: ProductsCategoryIdRoute,
+  ProductsCategoryIndexRoute: ProductsCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
