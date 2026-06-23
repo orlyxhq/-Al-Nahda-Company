@@ -32,7 +32,8 @@ const SECTIONS = [
 ];
 
 function DiseaseDetail() {
-  const { disease } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { disease: Disease };
+  const disease = data.disease;
   const category = DISEASE_CATEGORIES.find((c) => c.slug === disease.category);
   const products = disease.relatedProducts.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
   const related = disease.relatedDiseases.map((id) => DISEASES.find((d) => d.id === id)).filter(Boolean);
