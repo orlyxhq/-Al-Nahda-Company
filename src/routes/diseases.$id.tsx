@@ -208,7 +208,7 @@ function DiseaseDetail() {
   );
 }
 
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section id={id} className="scroll-mt-28">
       <div className="flex items-center gap-4">
