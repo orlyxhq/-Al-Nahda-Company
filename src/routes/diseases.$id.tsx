@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { DISEASES, DISEASE_CATEGORIES, PRODUCTS, type Disease } from "@/lib/data";
 
 export const Route = createFileRoute("/diseases/$id")({
