@@ -82,7 +82,7 @@ export const DISEASE_CATEGORIES: { slug: DiseaseCategory; title: string; count: 
 ];
 
 export const CROP_TAGS = [
-  "طماطم", "خيار", "بطاطس", "قمح", "ذرة", "زيتون", "عنب", "موالح", "تفاح", "فلفل", "باذنجان", "قطن",
+  "طماطم", "خيار", "بطاطس", "قمح", "ذرة", "زيتون", "عنب", "موالح", "تفاح", "فلفل", "باذنجان", "قطن", "قات", "بُن",
 ];
 
 export type Disease = {
