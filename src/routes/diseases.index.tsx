@@ -168,8 +168,8 @@ function DiseasesIndex() {
                     </span>
                     <span className="text-[11px] font-mono text-muted-foreground" style={{direction:"ltr"}}>{d.scientific}</span>
                   </div>
-                  <h3 className="mt-3 text-xl font-bold transition group-hover:text-primary">{d.name}</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-foreground">{d.summary}</p>
+                  <h3 className="mt-3 text-lg font-bold transition group-hover:text-primary sm:text-xl balance">{d.name}</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-foreground balance">{d.summary}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {d.crops.map((c) => (
                       <span key={c} className="rounded-md bg-secondary/70 px-2 py-0.5 text-[11px] text-foreground/70">{c}</span>
