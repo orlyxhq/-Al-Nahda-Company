@@ -778,9 +778,9 @@ export const ARTICLES: Article[] = [
     author: "د. ريم الحارثي",
     authorRole: "باحثة تغذية نباتية — مركز البحوث الزراعية",
     image:
-      "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80",
     cover:
-      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80",
     intro:
       "الرشّ الورقي ليس بديلاً عن التسميد الأرضي، بل أداة تكميليّة تُستخدم في حالات محدّدة. فهم هذه الحالات يفرّق بين مزارع يهدر المال على رشّات غير ضرورية، وآخر يستفيد من كل قطرة محلول.",
     sections: [
