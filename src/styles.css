@@ -190,17 +190,29 @@
 @utility display-1 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
-  line-height: 1.05;
+  font-size: clamp(1.75rem, 6vw, 4.75rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 @utility display-2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
-  line-height: 1.15;
+  font-size: clamp(1.5rem, 3.6vw, 2.75rem);
+  line-height: 1.2;
   letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+@utility balance {
+  text-wrap: balance;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
 
 @utility hairline {

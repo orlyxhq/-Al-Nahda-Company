@@ -43,7 +43,7 @@ function DiseaseDetail() {
     <>
       {/* HEADER */}
       <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-12">
+        <div className="container-x py-8 sm:py-12">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <Link to="/diseases" className="hover:text-foreground">مركز الأمراض</Link>
             <span>/</span>
@@ -52,8 +52,8 @@ function DiseaseDetail() {
             <span className="text-foreground">{disease.name}</span>
           </nav>
 
-          <div className="mt-8 flex flex-wrap items-start justify-between gap-8">
-            <div className="max-w-3xl">
+          <div className="mt-6 flex flex-wrap items-start justify-between gap-6 sm:mt-8 sm:gap-8">
+            <div className="min-w-0 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2">
                 <span className={`rounded-full px-3 py-1 text-xs font-bold ${
                   disease.severity === "شديد" ? "bg-destructive/10 text-destructive" :
@@ -62,13 +62,13 @@ function DiseaseDetail() {
                 }`}>● درجة الخطورة: {disease.severity}</span>
                 <span className="rounded-full bg-background px-3 py-1 text-xs font-semibold">{category?.title}</span>
               </div>
-              <h1 className="display-1 mt-6">{disease.name}</h1>
-              <p className="mt-3 font-mono text-sm text-muted-foreground" style={{direction:"ltr", textAlign:"right"}}>
+              <h1 className="display-1 mt-5 balance">{disease.name}</h1>
+              <p className="mt-3 break-words font-mono text-xs text-muted-foreground sm:text-sm" style={{direction:"ltr", textAlign:"right"}}>
                 {disease.scientific}
               </p>
-              <p className="mt-6 text-lg leading-8 text-foreground/85">{disease.summary}</p>
+              <p className="mt-5 text-base leading-7 text-foreground/85 sm:text-lg sm:leading-8 balance">{disease.summary}</p>
 
-              <div className="mt-6 flex flex-wrap gap-1.5">
+              <div className="mt-5 flex flex-wrap gap-1.5">
                 <span className="text-xs text-muted-foreground self-center">المحاصيل المتأثّرة:</span>
                 {disease.crops.map((c) => (
                   <span key={c} className="rounded-full bg-background px-3 py-1 text-xs font-semibold">{c}</span>
