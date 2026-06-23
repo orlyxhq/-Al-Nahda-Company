@@ -98,7 +98,7 @@ function DiseasesIndex() {
 
 
       {/* ===== EXPLORE ===== */}
-      <section className="container-x py-14 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10">
+      <section className="container-x py-10 sm:py-14 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10">
         {/* sidebar */}
         <aside className="hidden lg:block">
           <div className="sticky top-24 space-y-8">
