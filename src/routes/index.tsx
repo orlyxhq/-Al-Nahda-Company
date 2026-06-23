@@ -3,6 +3,7 @@ import heroFields from "@/assets/hero-fields.jpg";
 import soilHands from "@/assets/soil-hands.jpg";
 import diseaseLeaf from "@/assets/disease-leaf.jpg";
 import cropWheat from "@/assets/crop-wheat.jpg";
+import { LazyImage } from "@/components/site/LazyImage";
 import {
   PRODUCT_CATEGORIES,
   STATS,
