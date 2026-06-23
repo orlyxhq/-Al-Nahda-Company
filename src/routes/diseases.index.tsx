@@ -39,41 +39,63 @@ function DiseasesIndex() {
           <img src={diseaseLeaf} alt="" className="h-full w-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-l from-ink via-ink/85 to-ink/60" />
-        <div className="container-x relative py-16 lg:py-24">
+        <div className="container-x relative py-12 sm:py-16 lg:py-24">
           <p className="eyebrow text-gold">مركز المعرفة الزراعية</p>
-          <h1 className="display-1 mt-6 max-w-3xl text-primary-foreground">
+          <h1 className="display-1 mt-5 max-w-3xl text-primary-foreground balance">
             شخّص المرض. افهم السبب. اتّخذ القرار.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-primary-foreground/85">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-primary-foreground/85 sm:text-lg sm:leading-8 balance">
             قاعدة بيانات شاملة لأمراض المحاصيل وآفاتها واضطرابات التغذية،
             تجمع بين المراجع العلمية والخبرة الميدانية في واجهة عربية احترافية.
           </p>
 
-          <div className="mt-10 flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 p-2 backdrop-blur">
-            <svg className="mr-2 h-5 w-5 text-primary-foreground/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" strokeLinecap="round" /></svg>
+          <div className="mt-8 flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 p-2 backdrop-blur sm:mt-10">
+            <svg className="ms-1 h-5 w-5 shrink-0 text-primary-foreground/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" strokeLinecap="round" /></svg>
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="ابحث عن مرض، عارض، أو محصول..."
-              className="flex-1 bg-transparent px-2 py-3 text-base text-primary-foreground placeholder:text-primary-foreground/55 focus:outline-none"
+              className="min-w-0 flex-1 bg-transparent px-2 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/55 focus:outline-none sm:text-base"
             />
             <span className="hidden rounded-md bg-white/10 px-2 py-1 text-xs text-primary-foreground/70 md:inline-block">⌘K</span>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 text-xs sm:grid-cols-5">
+          {/* mobile horizontal crop chips */}
+          <div className="-mx-5 mt-6 overflow-x-auto px-5 no-scrollbar lg:hidden">
+            <div className="flex w-max gap-2 pb-1">
+              <button
+                onClick={() => setCrop("all")}
+                className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${crop === "all" ? "border-gold bg-gold/15 text-gold" : "border-white/15 text-primary-foreground/85"}`}
+              >
+                كل المحاصيل
+              </button>
+              {CROP_TAGS.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setCrop(crop === c ? "all" : c)}
+                  className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${crop === c ? "border-gold bg-gold/15 text-gold" : "border-white/15 text-primary-foreground/85"}`}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-2 text-xs sm:mt-10 sm:grid-cols-5 sm:gap-3">
             {DISEASE_CATEGORIES.map((c) => (
               <button
                 key={c.slug}
                 onClick={() => setCat(cat === c.slug ? "all" : c.slug)}
-                className={`rounded-lg border p-4 text-right transition ${cat === c.slug ? "border-gold bg-gold/15 text-gold" : "border-white/15 text-primary-foreground/85 hover:border-white/30"}`}
+                className={`rounded-lg border p-3 text-right transition sm:p-4 ${cat === c.slug ? "border-gold bg-gold/15 text-gold" : "border-white/15 text-primary-foreground/85 hover:border-white/30"}`}
               >
-                <p className="font-bold">{c.title}</p>
+                <p className="font-bold leading-tight">{c.title}</p>
                 <p className="mt-1 tnum text-primary-foreground/65">{c.count} سجل</p>
               </button>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* ===== EXPLORE ===== */}
       <section className="container-x py-14 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10">
