@@ -152,7 +152,7 @@ function DiseasesIndex() {
                 key={d.id}
                 to="/diseases/$id"
                 params={{ id: d.id }}
-                className="group grid gap-4 rounded-xl border border-border bg-card p-6 transition hover:border-primary hover:shadow-card sm:grid-cols-[1fr_auto]"
+                className="group grid gap-4 rounded-xl border border-border bg-card p-5 transition hover:border-primary hover:shadow-card sm:p-6 sm:grid-cols-[1fr_auto]"
               >
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
