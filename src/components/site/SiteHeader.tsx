@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 
 const NAV = [
@@ -14,12 +14,38 @@ const NAV = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const scrolledRef = useRef(false);
+  const router = useRouter();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const showBack = pathname !== "/";
+
+  const goBack = () => {
+    if (window.history.length > 1) {
+      router.history.back();
+      return;
+    }
+    router.navigate({ to: "/" });
+  };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const next = window.scrollY > 12;
+        if (scrolledRef.current !== next) {
+          scrolledRef.current = next;
+          setScrolled(next);
+        }
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -51,6 +77,16 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          {showBack && (
+            <button
+              type="button"
+              onClick={goBack}
+              className="inline-flex items-center gap-2 rounded-md border border-border-strong bg-background px-3 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary"
+            >
+              <span>→</span>
+              رجوع
+            </button>
+          )}
           <Link
             to="/diseases"
             className="inline-flex items-center gap-2 rounded-md border border-border-strong bg-background px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary"
@@ -69,15 +105,29 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <button
-          aria-label="فتح القائمة"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-md border border-border bg-background lg:hidden"
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>}
-          </svg>
-        </button>
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          {showBack && (
+            <button
+              type="button"
+              aria-label="رجوع"
+              onClick={goBack}
+              className="grid h-10 w-10 place-items-center rounded-md border border-border bg-background text-foreground"
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          )}
+          <button
+            aria-label="فتح القائمة"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-md border border-border bg-background"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? <path d="M6 6l12 12M18 6 6 18" /> : <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (

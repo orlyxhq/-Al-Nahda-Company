@@ -35,10 +35,10 @@ function ProductsIndex() {
       <section className="border-b border-border bg-secondary/40">
         <div className="container-x py-14 lg:py-20">
           <p className="eyebrow">كتالوج المنتجات</p>
-          <h1 className="display-1 mt-5 max-w-3xl">
+          <h1 className="display-1 mt-5 max-w-3xl text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">
             منتجات معتمدة. تركيبات حقيقية. نتائج قابلة للقياس.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
             ابحث في تشكيلة النهضة الزراعية والتجارية الكاملة من الأسمدة والمبيدات والبذور، مع
             تركيبات شفافة ومراجع علمية لكل منتج.
           </p>
@@ -56,10 +56,11 @@ function ProductsIndex() {
             />
             <svg className="pointer-events-none absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" strokeLinecap="round" /></svg>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="-mx-5 overflow-x-auto px-5 no-scrollbar md:mx-0 md:overflow-visible md:px-0">
+          <div className="flex w-max gap-2 md:w-auto md:flex-wrap">
             <button
               onClick={() => setCat("all")}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === "all" ? "border-primary bg-primary text-primary-foreground" : "border-border-strong bg-background text-foreground hover:bg-secondary"}`}
+              className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === "all" ? "border-primary bg-primary text-primary-foreground" : "border-border-strong bg-background text-foreground hover:bg-secondary"}`}
             >
               الكل
             </button>
@@ -67,11 +68,12 @@ function ProductsIndex() {
               <button
                 key={c.slug}
                 onClick={() => setCat(c.slug)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === c.slug ? "border-primary bg-primary text-primary-foreground" : "border-border-strong bg-background text-foreground hover:bg-secondary"}`}
+                className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === c.slug ? "border-primary bg-primary text-primary-foreground" : "border-border-strong bg-background text-foreground hover:bg-secondary"}`}
               >
                 {c.title}
               </button>
             ))}
+          </div>
           </div>
         </div>
 

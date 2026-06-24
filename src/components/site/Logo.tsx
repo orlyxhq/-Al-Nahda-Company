@@ -1,4 +1,4 @@
-import logoUrl from "@/assets/logo-nahda.png";
+import logoUrl from "@/assets/logo-nahda.webp";
 
 export function Logo({ className = "", showText = true }: { className?: string; showText?: boolean }) {
   return (

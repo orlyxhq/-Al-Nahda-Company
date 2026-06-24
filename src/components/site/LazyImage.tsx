@@ -7,7 +7,7 @@ type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
   wrapperClassName?: string;
 };
 
-export function LazyImage({ src, alt, className, wrapperClassName, ...rest }: Props) {
+export function LazyImage({ src, alt, className, wrapperClassName, loading = "lazy", ...rest }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
 
@@ -19,7 +19,7 @@ export function LazyImage({ src, alt, className, wrapperClassName, ...rest }: Pr
       <img
         src={src}
         alt={alt}
-        loading="lazy"
+        loading={loading}
         decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => setErrored(true)}

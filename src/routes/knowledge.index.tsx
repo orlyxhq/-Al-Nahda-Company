@@ -23,10 +23,10 @@ function KnowledgeIndex() {
       <section className="border-b border-border bg-secondary/40">
         <div className="container-x py-14 lg:py-20">
           <p className="eyebrow">مركز المعرفة</p>
-          <h1 className="display-1 mt-5 max-w-3xl">
+          <h1 className="display-1 mt-5 max-w-3xl text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">
             علم زراعي قابل للتطبيق، مكتوب بلغة المزارع.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
             مقالات وأدلّة من خبراء النهضة الزراعية والتجارية في إدارة التربة، الري، التغذية،
             وقاية النبات، وأفضل الممارسات الموسمية.
           </p>
@@ -43,6 +43,8 @@ function KnowledgeIndex() {
           <LazyImage
             src={featured.cover}
             alt={featured.title}
+              loading="eager"
+              fetchPriority="high"
             wrapperClassName="aspect-[4/3] md:aspect-auto md:h-full"
             className="transition-transform duration-700 group-hover:scale-105"
           />
