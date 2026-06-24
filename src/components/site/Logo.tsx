@@ -8,10 +8,10 @@ export function Logo({ className = "" }: { className?: string }) {
           <path d="M12 13c0-3-2.5-5-5.5-5C6.7 11 9 13 12 13Z" />
         </svg>
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-lg font-extrabold tracking-tight text-ink">النهضة الزراعية والتجارية</span>
-        <span className="mt-0.5 text-[10px] font-medium tracking-[0.22em] text-muted-foreground">
-          AGRITECH
+      <span className="flex flex-col leading-tight">
+        <span className="font-display text-[15px] sm:text-base font-extrabold tracking-tight text-ink whitespace-nowrap">النهضة الزراعية</span>
+        <span className="mt-0.5 text-[10px] sm:text-[11px] font-medium tracking-[0.14em] text-muted-foreground whitespace-nowrap">
+          والتجارية
         </span>
       </span>
     </span>
