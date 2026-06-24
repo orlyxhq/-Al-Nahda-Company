@@ -1,19 +1,25 @@
-export function Logo({ className = "" }: { className?: string }) {
+import logoUrl from "@/assets/logo-nahda.png";
+
+export function Logo({ className = "", showText = true }: { className?: string; showText?: boolean }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <span className="relative grid h-9 w-9 place-items-center rounded-md bg-primary text-primary-foreground">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 21V10" />
-          <path d="M12 10c0-4 3-7 7-7-.2 4-3 7-7 7Z" />
-          <path d="M12 13c0-3-2.5-5-5.5-5C6.7 11 9 13 12 13Z" />
-        </svg>
-      </span>
-      <span className="flex flex-col leading-tight">
-        <span className="font-display text-[15px] sm:text-base font-extrabold tracking-tight text-ink whitespace-nowrap">النهضة الزراعية</span>
-        <span className="mt-0.5 text-[10px] sm:text-[11px] font-medium tracking-[0.14em] text-muted-foreground whitespace-nowrap">
-          والتجارية
+      <img
+        src={logoUrl}
+        alt="النهضة الزراعية والتجارية"
+        className="h-11 w-11 sm:h-12 sm:w-12 object-contain shrink-0 drop-shadow-sm"
+        loading="eager"
+        decoding="async"
+      />
+      {showText && (
+        <span className="flex flex-col leading-tight">
+          <span className="font-display text-[15px] sm:text-base font-extrabold tracking-tight text-ink whitespace-nowrap">
+            النهضة الزراعية
+          </span>
+          <span className="mt-0.5 text-[10px] sm:text-[11px] font-medium tracking-[0.14em] text-muted-foreground whitespace-nowrap">
+            والتجارية
+          </span>
         </span>
-      </span>
+      )}
     </span>
   );
 }
