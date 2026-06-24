@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TIMELINE, VALUES } from "@/lib/data";
-import soilHands from "@/assets/soil-hands.jpg";
+import soilHands from "@/assets/soil-hands.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -22,7 +22,7 @@ function AboutPage() {
           <div>
             <p className="eyebrow">عن الشركة</p>
             <h1 className="display-1 mt-6">
-              ٢٧ عاماً في خدمة الأرض،
+              أكثر من ٥٠ عاماً في خدمة الأرض،
               <br />ومن يعمل عليها.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
@@ -33,7 +33,7 @@ function AboutPage() {
             </p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-            <img src={soilHands} alt="" width={1400} height={1000} className="aspect-[4/3] w-full object-cover" />
+            <img src={soilHands} alt="" width={720} height={584} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
           </div>
         </div>
       </section>

@@ -62,6 +62,16 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          {showBack && (
+            <button
+              type="button"
+              onClick={goBack}
+              className="inline-flex items-center gap-2 rounded-md border border-border-strong bg-background px-3 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary"
+            >
+              <span>→</span>
+              رجوع
+            </button>
+          )}
           <Link
             to="/diseases"
             className="inline-flex items-center gap-2 rounded-md border border-border-strong bg-background px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary"

@@ -47,7 +47,7 @@
 
   --font-display: "Noto Kufi Arabic", "Tajawal", system-ui, sans-serif;
   --font-sans: "IBM Plex Sans Arabic", "Tajawal", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-mono: "Roboto Mono", "IBM Plex Mono", ui-monospace, monospace;
 
   --shadow-soft: 0 1px 2px oklch(0.18 0.02 150 / 0.04), 0 8px 24px -12px oklch(0.18 0.02 150 / 0.08);
   --shadow-card: 0 1px 0 oklch(0.18 0.02 150 / 0.04), 0 24px 48px -24px oklch(0.18 0.02 150 / 0.18);
@@ -146,9 +146,13 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
     line-height: 1.2;
     color: var(--color-ink);
+  }
+
+  img {
+    content-visibility: auto;
   }
 
   ::selection {
@@ -192,7 +196,7 @@
   font-weight: 800;
   font-size: clamp(1.75rem, 6vw, 4.75rem);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
@@ -201,7 +205,7 @@
   font-weight: 700;
   font-size: clamp(1.5rem, 3.6vw, 2.75rem);
   line-height: 1.2;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
@@ -242,6 +246,7 @@
 
 /* RTL number tabular */
 @utility tnum {
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }
