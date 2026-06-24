@@ -213,12 +213,11 @@ function DiseasesShowcase() {
           </div>
           <div className="absolute inset-0 bg-gradient-to-l from-ink via-ink/85 to-ink/40" />
 
-          <div className="relative grid gap-10 p-8 md:p-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:p-16">
-            <div>
+          <div className="relative grid gap-8 p-5 sm:p-8 md:p-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:p-16">
+            <div className="min-w-0">
               <p className="eyebrow text-gold">قاعدة المعرفة</p>
-              <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight md:text-5xl">
-                مركز الأمراض والحلول الزراعية.
-                <br />
+              <h2 className="mt-5 font-display text-[1.55rem] font-extrabold leading-tight balance sm:text-3xl md:text-4xl lg:text-5xl">
+                مركز الأمراض والحلول الزراعية.{" "}
                 <span className="text-gold">المرجع العربي الأشمل.</span>
               </h2>
               <p className="mt-6 max-w-xl text-base leading-8 text-primary-foreground/85">
