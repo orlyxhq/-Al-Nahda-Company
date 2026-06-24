@@ -606,9 +606,9 @@ export const ARTICLES: Article[] = [
     author: "د. سامر العتيبي",
     authorRole: "أستاذ علوم التربة — كلية الزراعة",
     image:
-      "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=900&q=70",
     cover:
-      "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1200&q=70",
     intro:
       "تحضير التربة قبل موسم الربيع ليس مجرّد حرث وتسوية، بل سلسلة قرارات علميّة دقيقة تُحدّد سقف إنتاجك للموسم بأكمله. في هذا الدليل نستعرض منهجية متكاملة طوّرها مهندسو النهضة الزراعية والتجارية بعد متابعة أكثر من ١٢٠٠ حقل خلال السنوات الخمس الماضية.",
     sections: [
@@ -667,9 +667,9 @@ export const ARTICLES: Article[] = [
     author: "م. لينا الزهراني",
     authorRole: "مهندسة ري — قسم الحلول الذكية في النهضة الزراعية والتجارية",
     image:
-      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=70",
     cover:
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=70",
     intro:
       "في زمن باتت فيه قطرة الماء أغلى من أيّ سماد، لم يعد الري بالتنقيط رفاهية بل ضرورة اقتصادية. لكن تركيب الشبكة وحده لا يكفي — الكفاءة الحقيقية تأتي من جدولة دقيقة مبنيّة على بيانات يومية للمحصول والتربة والمناخ.",
     sections: [
@@ -725,9 +725,9 @@ export const ARTICLES: Article[] = [
     author: "د. خالد منصور",
     authorRole: "استشاري وقاية نبات معتمد",
     image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=70",
     cover:
-      "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1200&q=70",
     intro:
       "الإدارة المتكاملة للآفات (IPM) ليست تقنية بل فلسفة إدارية: المبيد آخر سلاح نلجأ إليه، لا أوّله. عبر الجمع بين الأصناف المقاومة، والأعداء الطبيعيين، والمراقبة الدقيقة، يمكن خفض كلفة الوقاية ٣٠–٦٠% مع تحسين جودة المحصول.",
     sections: [
@@ -778,9 +778,9 @@ export const ARTICLES: Article[] = [
     author: "د. ريم الحارثي",
     authorRole: "باحثة تغذية نباتية — مركز البحوث الزراعية",
     image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=70",
     cover:
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=70",
     intro:
       "الرشّ الورقي ليس بديلاً عن التسميد الأرضي، بل أداة تكميليّة تُستخدم في حالات محدّدة. فهم هذه الحالات يفرّق بين مزارع يهدر المال على رشّات غير ضرورية، وآخر يستفيد من كل قطرة محلول.",
     sections: [
