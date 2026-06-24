@@ -75,10 +75,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "زِراعة — منصة الحلول الزراعية المتكاملة" },
-      { name: "description", content: "زِراعة هي منصة عربية متخصّصة في الأسمدة والمبيدات والبذور وحلول مكافحة الأمراض الزراعية، تخدم المزارعين والشركات في جميع أنحاء المنطقة." },
+      { title: "النهضة الزراعية والتجارية — منصة الحلول الزراعية المتكاملة" },
+      { name: "description", content: "النهضة الزراعية والتجارية هي منصة عربية متخصّصة في الأسمدة والمبيدات والبذور وحلول مكافحة الأمراض الزراعية، تخدم المزارعين والشركات في جميع أنحاء المنطقة." },
       { name: "author", content: "Ziraa Agritech" },
-      { property: "og:title", content: "زِراعة — منصة الحلول الزراعية المتكاملة" },
+      { property: "og:title", content: "النهضة الزراعية والتجارية — منصة الحلول الزراعية المتكاملة" },
       { property: "og:description", content: "أسمدة، مبيدات، بذور، وقاعدة معرفية متقدّمة لتشخيص أمراض المحاصيل وحلولها." },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "ar_AR" },

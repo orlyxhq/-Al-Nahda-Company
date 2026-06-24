@@ -15,9 +15,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "زِراعة — منصّة الحلول الزراعية المتكاملة" },
+      { title: "النهضة الزراعية والتجارية — منصّة الحلول الزراعية المتكاملة" },
       { name: "description", content: "أسمدة، مبيدات، بذور، وقاعدة معرفية عربية متقدّمة لتشخيص أمراض المحاصيل وحلولها." },
-      { property: "og:title", content: "زِراعة — منصّة الحلول الزراعية المتكاملة" },
+      { property: "og:title", content: "النهضة الزراعية والتجارية — منصّة الحلول الزراعية المتكاملة" },
       { property: "og:image", content: heroFields },
     ],
   }),
@@ -100,7 +100,7 @@ function Hero() {
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent p-6 text-primary-foreground">
                 <p className="text-xs tracking-[0.22em] text-primary-foreground/80 uppercase">حقل القصيم · موسم ٢٠٢٥</p>
                 <p className="mt-2 max-w-xs text-base font-medium">
-                  زيادة إنتاجية القمح بنسبة ٢٣٪ بعد تطبيق برنامج تغذية ووقاية متكامل من زِراعة.
+                  زيادة إنتاجية القمح بنسبة ٢٣٪ بعد تطبيق برنامج تغذية ووقاية متكامل من النهضة الزراعية والتجارية.
                 </p>
               </div>
             </div>
@@ -292,12 +292,12 @@ function WhyUs() {
     <section className="mt-28 lg:mt-40">
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.3fr]">
         <div>
-          <p className="eyebrow">لماذا زِراعة</p>
+          <p className="eyebrow">لماذا النهضة الزراعية والتجارية</p>
           <h2 className="display-2 mt-5">
             شريك زراعي حقيقي، لا مجرّد بائع منتجات.
           </h2>
           <p className="mt-6 leading-8 text-muted-foreground">
-            بُنيت زِراعة على فكرة بسيطة: المزارع يحتاج إلى نصيحة حياديّة وعِلم
+            بُنيت النهضة الزراعية والتجارية على فكرة بسيطة: المزارع يحتاج إلى نصيحة حياديّة وعِلم
             قابل للتطبيق، لا إلى كتالوج منتجات. كل قرار نقدّمه مدعوم بالبيانات
             والخبرة الميدانية.
           </p>

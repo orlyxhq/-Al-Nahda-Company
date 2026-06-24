@@ -7,7 +7,7 @@ export const Route = createFileRoute("/diseases/$id")({
     const d = DISEASES.find((x) => x.id === params.id);
     return {
       meta: [
-        { title: `${d?.name ?? "مرض"} — مركز المعرفة | زِراعة` },
+        { title: `${d?.name ?? "مرض"} — مركز المعرفة | النهضة الزراعية والتجارية` },
         { name: "description", content: d?.summary ?? "" },
         { property: "og:title", content: `${d?.name ?? ""} — التشخيص والعلاج` },
       ],

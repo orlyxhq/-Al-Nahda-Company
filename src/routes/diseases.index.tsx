@@ -6,9 +6,9 @@ import diseaseLeaf from "@/assets/disease-leaf.jpg";
 export const Route = createFileRoute("/diseases/")({
   head: () => ({
     meta: [
-      { title: "الأمراض الزراعية والحلول — زِراعة" },
+      { title: "الأمراض الزراعية والحلول — النهضة الزراعية والتجارية" },
       { name: "description", content: "قاعدة معرفية عربية متكاملة لتشخيص أمراض المحاصيل وآفاتها ووضع برامج العلاج والوقاية." },
-      { property: "og:title", content: "مركز الأمراض والحلول الزراعية — زِراعة" },
+      { property: "og:title", content: "مركز الأمراض والحلول الزراعية — النهضة الزراعية والتجارية" },
       { property: "og:image", content: diseaseLeaf },
     ],
   }),

@@ -3,8 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "تواصل معنا — زِراعة" },
-      { name: "description", content: "تواصل مع فريق زِراعة عبر الهاتف أو واتساب أو زيارة فروعنا." },
+      { title: "تواصل معنا — النهضة الزراعية والتجارية" },
+      { name: "description", content: "تواصل مع فريق النهضة الزراعية والتجارية عبر الهاتف أو واتساب أو زيارة فروعنا." },
     ],
   }),
   component: ContactPage,
