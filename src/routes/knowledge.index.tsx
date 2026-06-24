@@ -5,7 +5,7 @@ import { LazyImage } from "@/components/site/LazyImage";
 export const Route = createFileRoute("/knowledge/")({
   head: () => ({
     meta: [
-      { title: "مركز المعرفة — زِراعة" },
+      { title: "مركز المعرفة — النهضة الزراعية والتجارية" },
       {
         name: "description",
         content:
@@ -27,7 +27,7 @@ function KnowledgeIndex() {
             علم زراعي قابل للتطبيق، مكتوب بلغة المزارع.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-            مقالات وأدلّة من خبراء زِراعة في إدارة التربة، الري، التغذية،
+            مقالات وأدلّة من خبراء النهضة الزراعية والتجارية في إدارة التربة، الري، التغذية،
             وقاية النبات، وأفضل الممارسات الموسمية.
           </p>
         </div>

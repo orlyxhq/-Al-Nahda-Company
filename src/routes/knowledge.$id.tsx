@@ -7,9 +7,9 @@ export const Route = createFileRoute("/knowledge/$id")({
     const a = ARTICLES.find((x) => x.id === params.id);
     return {
       meta: [
-        { title: `${a?.title ?? "مقال"} — زِراعة` },
+        { title: `${a?.title ?? "مقال"} — النهضة الزراعية والتجارية` },
         { name: "description", content: a?.excerpt ?? "" },
-        { property: "og:title", content: a?.title ?? "مقال — زِراعة" },
+        { property: "og:title", content: a?.title ?? "مقال — النهضة الزراعية والتجارية" },
         { property: "og:description", content: a?.excerpt ?? "" },
         ...(a?.cover ? [{ property: "og:image", content: a.cover }] : []),
       ],

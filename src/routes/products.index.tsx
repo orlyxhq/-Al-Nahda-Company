@@ -5,9 +5,9 @@ import { PRODUCT_CATEGORIES, PRODUCTS, type ProductCategory } from "@/lib/data";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "المنتجات — زِراعة" },
-      { name: "description", content: "تصفّح تشكيلة زِراعة الكاملة من الأسمدة والمبيدات والبذور المعتمدة." },
-      { property: "og:title", content: "المنتجات — زِراعة" },
+      { title: "المنتجات — النهضة الزراعية والتجارية" },
+      { name: "description", content: "تصفّح تشكيلة النهضة الزراعية والتجارية الكاملة من الأسمدة والمبيدات والبذور المعتمدة." },
+      { property: "og:title", content: "المنتجات — النهضة الزراعية والتجارية" },
     ],
   }),
   component: ProductsIndex,
@@ -39,7 +39,7 @@ function ProductsIndex() {
             منتجات معتمدة. تركيبات حقيقية. نتائج قابلة للقياس.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-            ابحث في تشكيلة زِراعة الكاملة من الأسمدة والمبيدات والبذور، مع
+            ابحث في تشكيلة النهضة الزراعية والتجارية الكاملة من الأسمدة والمبيدات والبذور، مع
             تركيبات شفافة ومراجع علمية لكل منتج.
           </p>
         </div>

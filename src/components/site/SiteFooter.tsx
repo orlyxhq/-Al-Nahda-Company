@@ -81,7 +81,7 @@ export function SiteFooter() {
 
       <div className="border-t border-border">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-foreground md:flex-row">
-          <p>© {new Date().getFullYear()} زِراعة. جميع الحقوق محفوظة.</p>
+          <p>© {new Date().getFullYear()} النهضة الزراعية والتجارية. جميع الحقوق محفوظة.</p>
           <div className="flex items-center gap-5">
             <a href="#" className="hover:text-foreground">سياسة الخصوصية</a>
             <a href="#" className="hover:text-foreground">شروط الاستخدام</a>

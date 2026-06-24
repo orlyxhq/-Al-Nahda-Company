@@ -9,7 +9,7 @@ export function Logo({ className = "" }: { className?: string }) {
         </svg>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-lg font-extrabold tracking-tight text-ink">زِراعة</span>
+        <span className="font-display text-lg font-extrabold tracking-tight text-ink">النهضة الزراعية والتجارية</span>
         <span className="mt-0.5 text-[10px] font-medium tracking-[0.22em] text-muted-foreground">
           AGRITECH
         </span>

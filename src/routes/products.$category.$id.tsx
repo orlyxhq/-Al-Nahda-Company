@@ -6,7 +6,7 @@ export const Route = createFileRoute("/products/$category/$id")({
     const p = PRODUCTS.find((x) => x.id === params.id);
     return {
       meta: [
-        { title: `${p?.name ?? "منتج"} — زِراعة` },
+        { title: `${p?.name ?? "منتج"} — النهضة الزراعية والتجارية` },
         { name: "description", content: p?.description ?? "" },
       ],
     };

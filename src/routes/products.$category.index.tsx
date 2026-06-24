@@ -6,9 +6,9 @@ export const Route = createFileRoute("/products/$category/")({
     const cat = PRODUCT_CATEGORIES.find((c) => c.slug === params.category);
     return {
       meta: [
-        { title: `${cat?.title ?? "المنتجات"} — زِراعة` },
+        { title: `${cat?.title ?? "المنتجات"} — النهضة الزراعية والتجارية` },
         { name: "description", content: cat?.description ?? "" },
-        { property: "og:title", content: `${cat?.title ?? "المنتجات"} — زِراعة` },
+        { property: "og:title", content: `${cat?.title ?? "المنتجات"} — النهضة الزراعية والتجارية` },
       ],
     };
   },
