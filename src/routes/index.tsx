@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroFields from "@/assets/hero-fields.jpg";
-import soilHands from "@/assets/soil-hands.jpg";
-import diseaseLeaf from "@/assets/disease-leaf.jpg";
-import cropWheat from "@/assets/crop-wheat.jpg";
+import heroFields from "@/assets/hero-fields.webp";
+import soilHands from "@/assets/soil-hands.webp";
+import diseaseLeaf from "@/assets/disease-leaf.webp";
+import cropWheat from "@/assets/crop-wheat.webp";
 import { LazyImage } from "@/components/site/LazyImage";
 import {
   PRODUCT_CATEGORIES,
@@ -20,6 +20,9 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "النهضة الزراعية والتجارية — منصّة الحلول الزراعية المتكاملة" },
       { property: "og:image", content: heroFields },
     ],
+      links: [
+        { rel: "preload", as: "image", href: heroFields, fetchPriority: "high" },
+      ],
   }),
   component: Home,
 });
@@ -95,6 +98,8 @@ function Hero() {
                 alt="حقول زراعية ممتدّة عند الغروب"
                 width={1920}
                 height={1280}
+                decoding="async"
+                fetchPriority="high"
                 className="aspect-[4/5] w-full object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent p-6 text-primary-foreground">
@@ -163,7 +168,7 @@ function CategoriesSection() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCT_CATEGORIES.map((cat, i) => (
             <Link
               key={cat.slug}
@@ -171,14 +176,14 @@ function CategoriesSection() {
               params={{ category: cat.slug }}
               className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary"
             >
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative overflow-hidden bg-secondary">
+                <LazyImage
                   src={imgs[i]}
                   alt={cat.title}
                   width={1200}
                   height={900}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
+                  wrapperClassName="aspect-[4/3]"
+                  className="transition duration-700 group-hover:scale-105"
                 />
                 <span className="absolute top-4 right-4 rounded-full bg-background/95 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur tnum">
                   {cat.count} منتج
@@ -207,34 +212,34 @@ function DiseasesShowcase() {
   return (
     <section className="mt-28 lg:mt-40">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-ink text-primary-foreground">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-ink text-primary-foreground sm:rounded-3xl">
           <div className="absolute inset-0 opacity-30">
-            <img src={diseaseLeaf} alt="" className="h-full w-full object-cover" loading="lazy" />
+            <img src={diseaseLeaf} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-l from-ink via-ink/85 to-ink/40" />
 
-          <div className="relative grid gap-8 p-5 sm:p-8 md:p-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:p-16">
+          <div className="relative grid min-w-0 gap-7 p-4 sm:p-8 md:p-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:p-16">
             <div className="min-w-0">
               <p className="eyebrow text-gold">قاعدة المعرفة</p>
-              <h2 className="mt-5 font-display text-[1.55rem] font-extrabold leading-tight balance sm:text-3xl md:text-4xl lg:text-5xl">
+              <h2 className="mt-4 max-w-full break-words font-display text-[1.35rem] font-extrabold leading-snug sm:mt-5 sm:text-3xl md:text-4xl lg:text-5xl">
                 مركز الأمراض والحلول الزراعية.{" "}
                 <span className="text-gold">المرجع العربي الأشمل.</span>
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-primary-foreground/85">
+              <p className="mt-5 max-w-xl text-sm leading-7 text-primary-foreground/85 sm:mt-6 sm:text-base sm:leading-8">
                 ابحث عن المرض بالاسم، أو بالعارض، أو بالمحصول، واحصل على دليل
                 علاجي مفصّل: الأعراض، الأسباب، عوامل الخطر، الوقاية، خطّة العلاج،
                 والمنتجات الموصى بها.
               </p>
 
-              <form className="mt-8 flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 p-2 backdrop-blur">
+              <form className="mt-7 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-xl border border-white/15 bg-white/5 p-2 backdrop-blur sm:mt-8">
                 <input
                   type="text"
                   placeholder="ابحث: لفحة الطماطم، بياض زغبي، نقص بوتاسيوم..."
-                  className="flex-1 bg-transparent px-3 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none"
+                  className="min-w-0 bg-transparent px-2 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none sm:px-3"
                 />
                 <Link
                   to="/diseases"
-                  className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-gold-foreground transition hover:opacity-90"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-gold px-4 py-3 text-sm font-bold text-gold-foreground transition hover:opacity-90 sm:px-5"
                 >
                   بحث
                 </Link>
@@ -247,22 +252,22 @@ function DiseasesShowcase() {
               </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="min-w-0 space-y-3">
               {featured.map((d) => (
                 <Link
                   key={d.id}
                   to="/diseases/$id"
                   params={{ id: d.id }}
-                  className="group flex items-start justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-5 transition hover:border-gold hover:bg-white/10"
+                  className="group grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-gold hover:bg-white/10 sm:p-5"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className={`h-2 w-2 rounded-full ${
+                      <span className={`h-2 w-2 shrink-0 rounded-full ${
                         d.severity === "شديد" ? "bg-destructive" : d.severity === "متوسّط" ? "bg-gold" : "bg-primary-foreground/60"
                       }`} />
-                      <span className="text-[11px] tracking-widest text-primary-foreground/70 uppercase">{d.scientific}</span>
+                      <span className="truncate text-[10px] tracking-widest text-primary-foreground/70 uppercase sm:text-[11px]">{d.scientific}</span>
                     </div>
-                    <h3 className="mt-2 text-lg font-bold">{d.name}</h3>
+                    <h3 className="mt-2 truncate text-base font-bold sm:text-lg">{d.name}</h3>
                     <p className="mt-1 text-xs text-primary-foreground/70">يصيب: {d.crops.join(" · ")}</p>
                   </div>
                   <span className="mt-1 text-gold opacity-0 transition group-hover:opacity-100">←</span>

@@ -829,7 +829,7 @@ export const STATS = [
   { value: "+٤٢٠٠٠", label: "مزارع نخدمهم سنوياً" },
   { value: "+٢٩٠", label: "منتج معتمد" },
   { value: "+٦٠", label: "محصولاً مدعوماً" },
-  { value: "٢٧", label: "سنة من الخبرة الميدانية" },
+  { value: "+٥٠", label: "سنة من الخبرة الميدانية" },
 ];
 
 export const TESTIMONIALS = [
