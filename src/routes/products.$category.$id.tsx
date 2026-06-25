@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { PRODUCTS, PRODUCT_CATEGORIES, type Product } from "@/lib/data";
+import { PRODUCTS, PRODUCT_CATEGORIES, DISEASES, SYMPTOMS, PRODUCT_ACTIVE_INGREDIENTS, PRODUCT_SOLVES_PROBLEMS, type Product } from "@/lib/data";
 
 export const Route = createFileRoute("/products/$category/$id")({
   head: ({ params }) => {
@@ -24,6 +24,11 @@ function ProductDetail() {
   const product = data.product;
   const cat = PRODUCT_CATEGORIES.find((c) => c.slug === product.category)!;
   const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 3);
+
+  const ingredients = PRODUCT_ACTIVE_INGREDIENTS[product.id] ?? [];
+  const solvedIds = PRODUCT_SOLVES_PROBLEMS[product.id] ?? [];
+  const solvedDiseases = solvedIds.map((id) => DISEASES.find((d) => d.id === id)).filter(Boolean) as typeof DISEASES;
+  const solvedSymptoms = solvedIds.map((id) => SYMPTOMS.find((s) => s.id === id)).filter(Boolean) as typeof SYMPTOMS;
 
   return (
     <>
