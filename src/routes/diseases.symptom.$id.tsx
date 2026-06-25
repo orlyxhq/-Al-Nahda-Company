@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { SYMPTOMS, DISEASES, PRODUCTS, PRODUCT_SOLVES_PROBLEMS } from "@/lib/data";
+import { SYMPTOMS, DISEASES, PRODUCTS, PRODUCT_SOLVES_PROBLEMS, type Symptom } from "@/lib/data";
 
 export const Route = createFileRoute("/diseases/symptom/$id")({
   head: ({ params }) => {
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/diseases/symptom/$id")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }): { symptom: Symptom } => {
     const symptom = SYMPTOMS.find((x) => x.id === params.id);
     if (!symptom) throw notFound();
     return { symptom };

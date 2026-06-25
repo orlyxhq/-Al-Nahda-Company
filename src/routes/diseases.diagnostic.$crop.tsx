@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { DIAGNOSTIC_CROPS, SYMPTOMS } from "@/lib/data";
+import { DIAGNOSTIC_CROPS, SYMPTOMS, type CropDef, type Symptom } from "@/lib/data";
 
 export const Route = createFileRoute("/diseases/diagnostic/$crop")({
   head: ({ params }) => {
@@ -11,12 +11,12 @@ export const Route = createFileRoute("/diseases/diagnostic/$crop")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }): { crop: CropDef; symptoms: Symptom[] } => {
     const crop = DIAGNOSTIC_CROPS.find((x) => x.id === params.crop);
     if (!crop) throw notFound();
     const symptoms = crop.commonSymptoms
       .map((sid) => SYMPTOMS.find((s) => s.id === sid))
-      .filter(Boolean) as typeof SYMPTOMS;
+      .filter((s): s is Symptom => Boolean(s));
     return { crop, symptoms };
   },
   component: CropDiagnostic,
