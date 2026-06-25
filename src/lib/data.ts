@@ -860,3 +860,13 @@ export const VALUES = [
   { title: "الاستدامة", text: "اختيارات تحافظ على التربة والمياه للأجيال القادمة." },
   { title: "الشفافية", text: "تركيبات واضحة، أسعار معلنة، ومواعيد التزام دقيقة." },
 ];
+
+// =========================================================
+// Merge extended disease records (bacterial, viral, pests,
+// deficiencies, symptoms diagnostic, product mappings).
+// =========================================================
+import { EXTRA_DISEASES } from "./diseases-extra";
+DISEASES.push(...EXTRA_DISEASES);
+
+export { SYMPTOMS, DIAGNOSTIC_CROPS, PRODUCT_ACTIVE_INGREDIENTS, PRODUCT_SOLVES_PROBLEMS, getProductsForProblem, getProblemsForProduct } from "./diseases-extra";
+export type { Symptom, SymptomCause, CropDef } from "./diseases-extra";
