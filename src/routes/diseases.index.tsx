@@ -96,6 +96,28 @@ function DiseasesIndex() {
         </div>
       </section>
 
+      {/* ===== DIAGNOSTIC CENTER CTA ===== */}
+      <section className="container-x pt-10 sm:pt-14">
+        <Link
+          to="/diseases/diagnostic"
+          className="group relative block overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-l from-gold/10 via-card to-card p-6 transition hover:border-gold sm:p-8"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="eyebrow text-gold">جديد · مركز التشخيص الذكي</p>
+              <h2 className="mt-3 text-xl font-bold sm:text-2xl balance">شخّص مشكلة محصولك في ٣ خطوات</h2>
+              <p className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground balance">
+                اختر المحصول، حدّد العَرَض، احصل على الأسباب المحتملة مرتّبة بالاحتمالية ومنتجات مقترحة للحلّ.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm font-bold text-gold-foreground transition group-hover:bg-gold/90">
+              ابدأ التشخيص <span>←</span>
+            </span>
+          </div>
+        </Link>
+      </section>
+
+
 
       {/* ===== EXPLORE ===== */}
       <section className="container-x py-10 sm:py-14 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10">

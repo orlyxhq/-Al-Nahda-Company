@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { PRODUCTS, PRODUCT_CATEGORIES, type Product } from "@/lib/data";
+import { PRODUCTS, PRODUCT_CATEGORIES, DISEASES, SYMPTOMS, PRODUCT_ACTIVE_INGREDIENTS, PRODUCT_SOLVES_PROBLEMS, type Product } from "@/lib/data";
 
 export const Route = createFileRoute("/products/$category/$id")({
   head: ({ params }) => {
@@ -24,6 +24,11 @@ function ProductDetail() {
   const product = data.product;
   const cat = PRODUCT_CATEGORIES.find((c) => c.slug === product.category)!;
   const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 3);
+
+  const ingredients = PRODUCT_ACTIVE_INGREDIENTS[product.id] ?? [];
+  const solvedIds = PRODUCT_SOLVES_PROBLEMS[product.id] ?? [];
+  const solvedDiseases = solvedIds.map((id) => DISEASES.find((d) => d.id === id)).filter(Boolean) as typeof DISEASES;
+  const solvedSymptoms = solvedIds.map((id) => SYMPTOMS.find((s) => s.id === id)).filter(Boolean) as typeof SYMPTOMS;
 
   return (
     <>
@@ -99,6 +104,66 @@ function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {(ingredients.length > 0 || solvedDiseases.length > 0 || solvedSymptoms.length > 0) && (
+        <section className="container-x py-12 sm:py-14">
+          <div className="ribbon-divider mb-10" />
+          <h2 className="display-2">المشاكل التي يساعد هذا المنتج في حلّها</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
+            مرجعيّة مبنيّة على المواد الفعّالة للمنتج وعلى قاعدة المعرفة الزراعية لدينا.
+          </p>
+
+          {ingredients.length > 0 && (
+            <div className="mt-8">
+              <p className="text-xs font-bold tracking-[0.18em] uppercase text-muted-foreground">المواد الفعّالة</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {ingredients.map((ing) => (
+                  <span key={ing} className="rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-semibold text-primary">{ing}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {solvedDiseases.length > 0 && (
+            <div className="mt-10">
+              <h3 className="text-lg font-bold">أمراض وآفات ونواقص يستهدفها</h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {solvedDiseases.map((d) => (
+                  <Link
+                    key={d.id}
+                    to="/diseases/$id"
+                    params={{ id: d.id }}
+                    className="group rounded-xl border border-border bg-card p-4 transition hover:border-primary"
+                  >
+                    <p className="font-mono text-[11px] text-muted-foreground" style={{ direction: "ltr", textAlign: "right" }}>{d.scientific}</p>
+                    <h4 className="mt-1 text-sm font-bold transition group-hover:text-primary">{d.name}</h4>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {solvedSymptoms.length > 0 && (
+            <div className="mt-10">
+              <h3 className="text-lg font-bold">أعراض زراعية يعالجها</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {solvedSymptoms.map((s) => (
+                  <Link
+                    key={s.id}
+                    to="/diseases/symptom/$id"
+                    params={{ id: s.id }}
+                    className="rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground/85 transition hover:border-primary hover:text-primary"
+                  >
+                    {s.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
+
 
       {related.length > 0 && (
         <section className="container-x py-14">

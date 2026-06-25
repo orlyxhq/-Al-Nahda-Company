@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { DISEASES, DISEASE_CATEGORIES, PRODUCTS, type Disease } from "@/lib/data";
+import { DISEASES, DISEASE_CATEGORIES, PRODUCTS, SYMPTOMS, PRODUCT_SOLVES_PROBLEMS, type Disease } from "@/lib/data";
 
 export const Route = createFileRoute("/diseases/$id")({
   head: ({ params }) => {
@@ -36,8 +36,13 @@ function DiseaseDetail() {
   const data = Route.useLoaderData() as { disease: Disease };
   const disease = data.disease;
   const category = DISEASE_CATEGORIES.find((c) => c.slug === disease.category);
-  const products = disease.relatedProducts.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
+
+  // Combine manually-curated related products with products that auto-match the disease ID
+  const autoMatched = PRODUCTS.filter((p) => (PRODUCT_SOLVES_PROBLEMS[p.id] ?? []).includes(disease.id)).map((p) => p.id);
+  const productIds = Array.from(new Set([...disease.relatedProducts, ...autoMatched]));
+  const products = productIds.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
   const related = disease.relatedDiseases.map((id) => DISEASES.find((d) => d.id === id)).filter(Boolean);
+  const relatedSymptoms = (disease.relatedSymptoms ?? []).map((id) => SYMPTOMS.find((s) => s.id === id)).filter(Boolean);
 
   return (
     <>
@@ -103,7 +108,34 @@ function DiseaseDetail() {
         <article className="prose-base max-w-none space-y-14">
           <Section id="overview" title="نظرة عامّة">
             <p className="text-base leading-8 text-foreground/85">{disease.overview}</p>
+            {disease.role && (
+              <div className="mt-5 rounded-xl border border-primary/30 bg-primary/5 p-5">
+                <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary">دور العنصر في النبات</p>
+                <p className="mt-2 text-sm leading-7 text-foreground/85">{disease.role}</p>
+              </div>
+            )}
           </Section>
+
+          {disease.visualIndicators && disease.visualIndicators.length > 0 && (
+            <Section id="visual" title="مؤشّرات بصرية للتشخيص">
+              <ChecklistGrid items={disease.visualIndicators} tone="warning" />
+            </Section>
+          )}
+
+          {disease.lifeCycle && disease.lifeCycle.length > 0 && (
+            <Section id="lifecycle" title="دورة الحياة">
+              <ol className="grid gap-3 sm:grid-cols-2">
+                {disease.lifeCycle.map((step, i) => (
+                  <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold/15 text-xs font-bold text-gold tnum">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm leading-7 text-foreground/85">{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </Section>
+          )}
 
           <Section id="symptoms" title="الأعراض">
             <ChecklistGrid items={disease.symptoms} tone="warning" />
@@ -128,6 +160,12 @@ function DiseaseDetail() {
             </div>
           </Section>
 
+          {disease.soilConditions && disease.soilConditions.length > 0 && (
+            <Section id="soil" title="ظروف التربة المُسبّبة">
+              <ChecklistGrid items={disease.soilConditions} tone="neutral" />
+            </Section>
+          )}
+
           <Section id="prevention" title="الوقاية">
             <ChecklistGrid items={disease.prevention} tone="success" />
           </Section>
@@ -145,6 +183,24 @@ function DiseaseDetail() {
               ))}
             </ol>
           </Section>
+
+          {disease.activeIngredients && disease.activeIngredients.length > 0 && (
+            <Section id="ingredients" title="المواد الفعّالة الموصى بها">
+              <div className="flex flex-wrap gap-2">
+                {disease.activeIngredients.map((ing, i) => (
+                  <span key={i} className="rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-semibold text-primary">
+                    {ing}
+                  </span>
+                ))}
+              </div>
+            </Section>
+          )}
+
+          {disease.fertilizerRecommendations && disease.fertilizerRecommendations.length > 0 && (
+            <Section id="fertilizer" title="توصيات التسميد">
+              <ChecklistGrid items={disease.fertilizerRecommendations} tone="success" />
+            </Section>
+          )}
 
           {products.length > 0 && (
             <Section id="products" title="منتجات موصى بها">
@@ -199,6 +255,27 @@ function DiseaseDetail() {
                       <p className="font-mono text-[11px] text-muted-foreground" style={{direction:"ltr", textAlign:"right"}}>{d.scientific}</p>
                       <h3 className="mt-1 text-lg font-bold">{d.name}</h3>
                       <p className="mt-2 text-sm leading-7 text-muted-foreground">{d.summary}</p>
+                    </Link>
+                  ) : null,
+                )}
+              </div>
+            </Section>
+          )}
+
+          {relatedSymptoms.length > 0 && (
+            <Section id="symptoms-related" title="أعراض ذات صلة في مركز التشخيص">
+              <div className="grid gap-4 md:grid-cols-2">
+                {relatedSymptoms.map((s) =>
+                  s ? (
+                    <Link
+                      key={s.id}
+                      to="/diseases/symptom/$id"
+                      params={{ id: s.id }}
+                      className="rounded-xl border border-border bg-card p-5 transition hover:border-primary"
+                    >
+                      <p className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">عَرَض</p>
+                      <h3 className="mt-2 text-lg font-bold">{s.name}</h3>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground line-clamp-3">{s.description}</p>
                     </Link>
                   ) : null,
                 )}

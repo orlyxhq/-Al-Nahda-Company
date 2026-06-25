@@ -18,7 +18,10 @@ import { Route as DiseasesIndexRouteImport } from './routes/diseases.index'
 import { Route as KnowledgeIdRouteImport } from './routes/knowledge.$id'
 import { Route as DiseasesIdRouteImport } from './routes/diseases.$id'
 import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
+import { Route as DiseasesDiagnosticIndexRouteImport } from './routes/diseases.diagnostic.index'
 import { Route as ProductsCategoryIdRouteImport } from './routes/products.$category.$id'
+import { Route as DiseasesSymptomIdRouteImport } from './routes/diseases.symptom.$id'
+import { Route as DiseasesDiagnosticCropRouteImport } from './routes/diseases.diagnostic.$crop'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -65,9 +68,24 @@ const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
   path: '/products/$category/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiseasesDiagnosticIndexRoute = DiseasesDiagnosticIndexRouteImport.update({
+  id: '/diseases/diagnostic/',
+  path: '/diseases/diagnostic/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsCategoryIdRoute = ProductsCategoryIdRouteImport.update({
   id: '/products/$category/$id',
   path: '/products/$category/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseasesSymptomIdRoute = DiseasesSymptomIdRouteImport.update({
+  id: '/diseases/symptom/$id',
+  path: '/diseases/symptom/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseasesDiagnosticCropRoute = DiseasesDiagnosticCropRouteImport.update({
+  id: '/diseases/diagnostic/$crop',
+  path: '/diseases/diagnostic/$crop',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -80,7 +98,10 @@ export interface FileRoutesByFullPath {
   '/diseases/': typeof DiseasesIndexRoute
   '/knowledge/': typeof KnowledgeIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/diseases/diagnostic/$crop': typeof DiseasesDiagnosticCropRoute
+  '/diseases/symptom/$id': typeof DiseasesSymptomIdRoute
   '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/diseases/diagnostic/': typeof DiseasesDiagnosticIndexRoute
   '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
@@ -92,7 +113,10 @@ export interface FileRoutesByTo {
   '/diseases': typeof DiseasesIndexRoute
   '/knowledge': typeof KnowledgeIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/diseases/diagnostic/$crop': typeof DiseasesDiagnosticCropRoute
+  '/diseases/symptom/$id': typeof DiseasesSymptomIdRoute
   '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/diseases/diagnostic': typeof DiseasesDiagnosticIndexRoute
   '/products/$category': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesById {
@@ -105,7 +129,10 @@ export interface FileRoutesById {
   '/diseases/': typeof DiseasesIndexRoute
   '/knowledge/': typeof KnowledgeIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/diseases/diagnostic/$crop': typeof DiseasesDiagnosticCropRoute
+  '/diseases/symptom/$id': typeof DiseasesSymptomIdRoute
   '/products/$category/$id': typeof ProductsCategoryIdRoute
+  '/diseases/diagnostic/': typeof DiseasesDiagnosticIndexRoute
   '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRouteTypes {
@@ -119,7 +146,10 @@ export interface FileRouteTypes {
     | '/diseases/'
     | '/knowledge/'
     | '/products/'
+    | '/diseases/diagnostic/$crop'
+    | '/diseases/symptom/$id'
     | '/products/$category/$id'
+    | '/diseases/diagnostic/'
     | '/products/$category/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -131,7 +161,10 @@ export interface FileRouteTypes {
     | '/diseases'
     | '/knowledge'
     | '/products'
+    | '/diseases/diagnostic/$crop'
+    | '/diseases/symptom/$id'
     | '/products/$category/$id'
+    | '/diseases/diagnostic'
     | '/products/$category'
   id:
     | '__root__'
@@ -143,7 +176,10 @@ export interface FileRouteTypes {
     | '/diseases/'
     | '/knowledge/'
     | '/products/'
+    | '/diseases/diagnostic/$crop'
+    | '/diseases/symptom/$id'
     | '/products/$category/$id'
+    | '/diseases/diagnostic/'
     | '/products/$category/'
   fileRoutesById: FileRoutesById
 }
@@ -156,7 +192,10 @@ export interface RootRouteChildren {
   DiseasesIndexRoute: typeof DiseasesIndexRoute
   KnowledgeIndexRoute: typeof KnowledgeIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
+  DiseasesDiagnosticCropRoute: typeof DiseasesDiagnosticCropRoute
+  DiseasesSymptomIdRoute: typeof DiseasesSymptomIdRoute
   ProductsCategoryIdRoute: typeof ProductsCategoryIdRoute
+  DiseasesDiagnosticIndexRoute: typeof DiseasesDiagnosticIndexRoute
   ProductsCategoryIndexRoute: typeof ProductsCategoryIndexRoute
 }
 
@@ -225,11 +264,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsCategoryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diseases/diagnostic/': {
+      id: '/diseases/diagnostic/'
+      path: '/diseases/diagnostic'
+      fullPath: '/diseases/diagnostic/'
+      preLoaderRoute: typeof DiseasesDiagnosticIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products/$category/$id': {
       id: '/products/$category/$id'
       path: '/products/$category/$id'
       fullPath: '/products/$category/$id'
       preLoaderRoute: typeof ProductsCategoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diseases/symptom/$id': {
+      id: '/diseases/symptom/$id'
+      path: '/diseases/symptom/$id'
+      fullPath: '/diseases/symptom/$id'
+      preLoaderRoute: typeof DiseasesSymptomIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diseases/diagnostic/$crop': {
+      id: '/diseases/diagnostic/$crop'
+      path: '/diseases/diagnostic/$crop'
+      fullPath: '/diseases/diagnostic/$crop'
+      preLoaderRoute: typeof DiseasesDiagnosticCropRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -244,19 +304,12 @@ const rootRouteChildren: RootRouteChildren = {
   DiseasesIndexRoute: DiseasesIndexRoute,
   KnowledgeIndexRoute: KnowledgeIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
+  DiseasesDiagnosticCropRoute: DiseasesDiagnosticCropRoute,
+  DiseasesSymptomIdRoute: DiseasesSymptomIdRoute,
   ProductsCategoryIdRoute: ProductsCategoryIdRoute,
+  DiseasesDiagnosticIndexRoute: DiseasesDiagnosticIndexRoute,
   ProductsCategoryIndexRoute: ProductsCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
