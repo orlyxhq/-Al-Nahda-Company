@@ -23,7 +23,7 @@ export const Route = createFileRoute("/diseases/diagnostic/$crop")({
 });
 
 function CropDiagnostic() {
-  const { crop, symptoms } = Route.useLoaderData();
+  const { crop, symptoms } = Route.useLoaderData() as { crop: CropDef; symptoms: Symptom[] };
 
   return (
     <>

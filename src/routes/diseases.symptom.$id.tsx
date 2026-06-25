@@ -26,7 +26,7 @@ const LIKELIHOOD_TONE: Record<string, string> = {
 };
 
 function SymptomDetail() {
-  const { symptom } = Route.useLoaderData();
+  const { symptom } = Route.useLoaderData() as { symptom: Symptom };
 
   const enriched = symptom.possibleCauses
     .map((c) => {
