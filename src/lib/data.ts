@@ -74,15 +74,15 @@ export const PRODUCTS: Product[] = [
 export type DiseaseCategory = "fungal" | "bacterial" | "viral" | "pest" | "deficiency";
 
 export const DISEASE_CATEGORIES: { slug: DiseaseCategory; title: string; count: number; description: string }[] = [
-  { slug: "fungal", title: "أمراض فطرية", count: 64, description: "البياض الزغبي والدقيقي، الذبول، تبقّع الأوراق وغيرها." },
-  { slug: "bacterial", title: "أمراض بكتيرية", count: 28, description: "اللفحات البكتيرية، التقرحات، تعفّن الجذور." },
-  { slug: "viral", title: "أمراض فيروسية", count: 19, description: "تبرقش الأوراق، فيروس موزاييك التبغ، الالتواء الأصفر." },
-  { slug: "pest", title: "آفات حشرية", count: 47, description: "المنّ، الذبابة البيضاء، التربس، حفارات السوق." },
-  { slug: "deficiency", title: "نقص العناصر", count: 22, description: "أعراض نقص النيتروجين والفوسفور والبوتاسيوم والعناصر الصغرى." },
+  { slug: "fungal", title: "الأمراض الفطرية", count: 10, description: "اللفحات، البياض الزغبي والدقيقي، الصدأ، الذبول الفيوزاريومي، الأنثراكنوز وغيرها." },
+  { slug: "bacterial", title: "الأمراض البكتيرية", count: 10, description: "اللفحة النارية، الذبول البكتيري، التقرّحات، العفن الطري، السرطان التاجي." },
+  { slug: "viral", title: "الأمراض الفيروسية", count: 10, description: "TYLCV، موزاييك التبغ والخيار، فيروسات البطاطس والقطن والحبوب." },
+  { slug: "pest", title: "الآفات الحشرية", count: 10, description: "المنّ، الذبابة البيضاء، التربس، صانعات الأنفاق، البقّ الدقيقي، العنكبوت الأحمر، سوسة النخيل." },
+  { slug: "deficiency", title: "نقص العناصر الغذائية", count: 14, description: "العناصر الكبرى (N, P, K, Ca, Mg, S) والصغرى (Fe, Zn, B, Mn, Cu, Mo) ومشاكل المادة العضوية." },
 ];
 
 export const CROP_TAGS = [
-  "طماطم", "خيار", "بطاطس", "قمح", "ذرة", "زيتون", "عنب", "موالح", "تفاح", "فلفل", "باذنجان", "قطن", "قات", "بُن",
+  "طماطم", "خيار", "بطاطس", "بطّيخ", "بصل", "قمح", "شعير", "ذرة", "أرز", "زيتون", "عنب", "موالح", "تفاح", "كمثرى", "مانجو", "فلفل", "باذنجان", "فاصوليا", "قطن", "قات", "بُن", "نخيل",
 ];
 
 export type Disease = {
