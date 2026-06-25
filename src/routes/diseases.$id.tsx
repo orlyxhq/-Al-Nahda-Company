@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { DISEASES, DISEASE_CATEGORIES, PRODUCTS, type Disease } from "@/lib/data";
+import { DISEASES, DISEASE_CATEGORIES, PRODUCTS, SYMPTOMS, PRODUCT_SOLVES_PROBLEMS, type Disease } from "@/lib/data";
 
 export const Route = createFileRoute("/diseases/$id")({
   head: ({ params }) => {
@@ -36,8 +36,13 @@ function DiseaseDetail() {
   const data = Route.useLoaderData() as { disease: Disease };
   const disease = data.disease;
   const category = DISEASE_CATEGORIES.find((c) => c.slug === disease.category);
-  const products = disease.relatedProducts.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
+
+  // Combine manually-curated related products with products that auto-match the disease ID
+  const autoMatched = PRODUCTS.filter((p) => (PRODUCT_SOLVES_PROBLEMS[p.id] ?? []).includes(disease.id)).map((p) => p.id);
+  const productIds = Array.from(new Set([...disease.relatedProducts, ...autoMatched]));
+  const products = productIds.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
   const related = disease.relatedDiseases.map((id) => DISEASES.find((d) => d.id === id)).filter(Boolean);
+  const relatedSymptoms = (disease.relatedSymptoms ?? []).map((id) => SYMPTOMS.find((s) => s.id === id)).filter(Boolean);
 
   return (
     <>
