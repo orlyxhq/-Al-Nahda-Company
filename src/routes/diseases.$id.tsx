@@ -108,7 +108,34 @@ function DiseaseDetail() {
         <article className="prose-base max-w-none space-y-14">
           <Section id="overview" title="نظرة عامّة">
             <p className="text-base leading-8 text-foreground/85">{disease.overview}</p>
+            {disease.role && (
+              <div className="mt-5 rounded-xl border border-primary/30 bg-primary/5 p-5">
+                <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary">دور العنصر في النبات</p>
+                <p className="mt-2 text-sm leading-7 text-foreground/85">{disease.role}</p>
+              </div>
+            )}
           </Section>
+
+          {disease.visualIndicators && disease.visualIndicators.length > 0 && (
+            <Section id="visual" title="مؤشّرات بصرية للتشخيص">
+              <ChecklistGrid items={disease.visualIndicators} tone="warning" />
+            </Section>
+          )}
+
+          {disease.lifeCycle && disease.lifeCycle.length > 0 && (
+            <Section id="lifecycle" title="دورة الحياة">
+              <ol className="grid gap-3 sm:grid-cols-2">
+                {disease.lifeCycle.map((step, i) => (
+                  <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold/15 text-xs font-bold text-gold tnum">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm leading-7 text-foreground/85">{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </Section>
+          )}
 
           <Section id="symptoms" title="الأعراض">
             <ChecklistGrid items={disease.symptoms} tone="warning" />
