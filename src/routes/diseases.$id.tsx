@@ -261,6 +261,27 @@ function DiseaseDetail() {
               </div>
             </Section>
           )}
+
+          {relatedSymptoms.length > 0 && (
+            <Section id="symptoms-related" title="أعراض ذات صلة في مركز التشخيص">
+              <div className="grid gap-4 md:grid-cols-2">
+                {relatedSymptoms.map((s) =>
+                  s ? (
+                    <Link
+                      key={s.id}
+                      to="/diseases/symptom/$id"
+                      params={{ id: s.id }}
+                      className="rounded-xl border border-border bg-card p-5 transition hover:border-primary"
+                    >
+                      <p className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">عَرَض</p>
+                      <h3 className="mt-2 text-lg font-bold">{s.name}</h3>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground line-clamp-3">{s.description}</p>
+                    </Link>
+                  ) : null,
+                )}
+              </div>
+            </Section>
+          )}
         </article>
       </div>
     </>
