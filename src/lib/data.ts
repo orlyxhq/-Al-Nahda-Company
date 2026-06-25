@@ -102,6 +102,14 @@ export type Disease = {
   faq: { q: string; a: string }[];
   relatedProducts: string[];
   relatedDiseases: string[];
+  // Optional enrichment (used by extended records)
+  activeIngredients?: string[];
+  lifeCycle?: string[];
+  role?: string;
+  visualIndicators?: string[];
+  soilConditions?: string[];
+  fertilizerRecommendations?: string[];
+  relatedSymptoms?: string[];
 };
 
 export const DISEASES: Disease[] = [
