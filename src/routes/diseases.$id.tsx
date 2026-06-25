@@ -160,6 +160,12 @@ function DiseaseDetail() {
             </div>
           </Section>
 
+          {disease.soilConditions && disease.soilConditions.length > 0 && (
+            <Section id="soil" title="ظروف التربة المُسبّبة">
+              <ChecklistGrid items={disease.soilConditions} tone="neutral" />
+            </Section>
+          )}
+
           <Section id="prevention" title="الوقاية">
             <ChecklistGrid items={disease.prevention} tone="success" />
           </Section>
@@ -177,6 +183,24 @@ function DiseaseDetail() {
               ))}
             </ol>
           </Section>
+
+          {disease.activeIngredients && disease.activeIngredients.length > 0 && (
+            <Section id="ingredients" title="المواد الفعّالة الموصى بها">
+              <div className="flex flex-wrap gap-2">
+                {disease.activeIngredients.map((ing, i) => (
+                  <span key={i} className="rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-semibold text-primary">
+                    {ing}
+                  </span>
+                ))}
+              </div>
+            </Section>
+          )}
+
+          {disease.fertilizerRecommendations && disease.fertilizerRecommendations.length > 0 && (
+            <Section id="fertilizer" title="توصيات التسميد">
+              <ChecklistGrid items={disease.fertilizerRecommendations} tone="success" />
+            </Section>
+          )}
 
           {products.length > 0 && (
             <Section id="products" title="منتجات موصى بها">
