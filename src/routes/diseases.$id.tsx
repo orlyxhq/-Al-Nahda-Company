@@ -211,21 +211,32 @@ function DiseaseDetail() {
                       key={p.id}
                       to="/products/$category/$id"
                       params={{ category: p.category, id: p.id }}
-                      className="group rounded-xl border border-border bg-card p-5 transition hover:border-primary"
+                      className="group flex gap-4 overflow-hidden rounded-xl border border-border bg-card p-4 transition hover:border-primary"
                     >
-                      <p className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">{p.tagline}</p>
-                      <h3 className="mt-2 text-lg font-bold">{p.name}</h3>
-                      <p className="mt-1 font-mono text-xs text-muted-foreground" style={{direction:"ltr", textAlign:"right"}}>{p.composition}</p>
-                      <p className="mt-3 text-sm leading-7 text-foreground/80">{p.description}</p>
-                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary">
-                        تفاصيل المنتج <span className="rotate-180">←</span>
-                      </span>
+                      {p.image && (
+                        <div
+                          className="relative aspect-square w-24 shrink-0 overflow-hidden rounded-lg sm:w-28"
+                          style={{ background: `radial-gradient(circle at 30% 20%, ${(p.brandColor ?? "hsl(var(--primary))")}26 0%, transparent 65%), hsl(var(--secondary))` }}
+                        >
+                          <img src={p.image} alt={p.name} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-contain p-1" />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">{p.tagline}</p>
+                        <h3 className="mt-1.5 text-base font-bold sm:text-lg">{p.name}</h3>
+                        <p className="mt-1 font-mono text-[10px] text-muted-foreground" style={{direction:"ltr", textAlign:"right"}}>{p.composition}</p>
+                        <p className="mt-2 line-clamp-2 text-xs leading-6 text-foreground/80 sm:text-sm">{p.description}</p>
+                        <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary sm:text-sm">
+                          تفاصيل المنتج <span className="rotate-180">←</span>
+                        </span>
+                      </div>
                     </Link>
                   ) : null,
                 )}
               </div>
             </Section>
           )}
+
 
           <Section id="faq" title="أسئلة شائعة">
             <div className="divide-y divide-border rounded-xl border border-border bg-card">
