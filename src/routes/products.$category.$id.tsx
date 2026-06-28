@@ -50,16 +50,36 @@ function ProductDetail() {
   return (
     <>
       {/* ============ HERO ============ */}
-      <section
-        className="relative overflow-hidden border-b border-border"
-        style={
-          isRich
-            ? {
-                background: `linear-gradient(135deg, ${brand}14 0%, ${brandDeep}22 60%, transparent 100%)`,
-              }
-            : undefined
-        }
-      >
+      <section className="relative overflow-hidden border-b border-border">
+        {/* Texture background — visible at top, fades out toward info boxes */}
+        {product.texture && (
+          <>
+            <img
+              src={product.texture}
+              alt=""
+              aria-hidden
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: `linear-gradient(180deg, ${brand}26 0%, ${brand}1a 30%, hsl(var(--background)/0.55) 60%, hsl(var(--background)/0.92) 90%, hsl(var(--background)) 100%)`,
+                backdropFilter: "blur(1.5px)",
+              }}
+            />
+          </>
+        )}
+        {!product.texture && isRich && (
+          <div
+            className="absolute inset-0"
+            style={{ background: `linear-gradient(135deg, ${brand}14 0%, ${brandDeep}22 60%, transparent 100%)` }}
+          />
+        )}
+
+        <div className="relative">
         <div className="container-x py-8 sm:py-12">
           <Link
             to="/products/$category"
@@ -68,7 +88,7 @@ function ProductDetail() {
           >
             <span>→</span> العودة إلى {cat.title}
           </Link>
-          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-foreground/75">
             <Link to="/products" className="hover:text-foreground">المنتجات</Link>
             <span>/</span>
             <Link to="/products/$category" params={{ category: cat.slug }} className="hover:text-foreground">{cat.title}</Link>
@@ -78,18 +98,18 @@ function ProductDetail() {
         </div>
 
         <div className="container-x grid gap-10 pb-12 sm:pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pb-20">
-          {/* Image */}
+          {/* Image — large, fills container */}
           <div className="order-2 lg:order-1">
             {product.image ? (
               <div
-                className="relative aspect-square overflow-hidden rounded-3xl border border-border/60 shadow-card"
-                style={{ background: `radial-gradient(circle at 30% 20%, ${brand}33 0%, transparent 60%), linear-gradient(160deg, ${brandDeep}1a, transparent)` }}
+                className="relative aspect-square overflow-hidden rounded-3xl border border-border/60 bg-background/60 shadow-card backdrop-blur-sm"
+                style={{ background: `radial-gradient(circle at 30% 20%, ${brand}40 0%, hsl(var(--background)/0.85) 70%)` }}
               >
                 <LazyImage
                   src={product.image}
                   alt={product.name}
                   wrapperClassName="absolute inset-0 bg-transparent"
-                  className="!object-contain p-6 sm:p-10"
+                  className="!object-contain p-1 sm:p-2"
                   fetchPriority="high"
                   loading="eager"
                 />
@@ -111,6 +131,7 @@ function ProductDetail() {
               </div>
             )}
           </div>
+
 
           {/* Info */}
           <div className="order-1 lg:order-2">
