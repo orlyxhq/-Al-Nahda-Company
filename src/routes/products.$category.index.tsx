@@ -65,14 +65,14 @@ function CategoryPage() {
               >
                 {p.image ? (
                   <div
-                    className="relative aspect-[4/3] overflow-hidden"
-                    style={{ background: `radial-gradient(circle at 30% 20%, ${brand}26 0%, transparent 65%), ${brand}0d` }}
+                    className="relative aspect-square overflow-hidden"
+                    style={{ background: `radial-gradient(circle at 30% 20%, ${brand}33 0%, transparent 65%), ${brand}12` }}
                   >
                     <LazyImage
                       src={p.image}
                       alt={p.name}
                       wrapperClassName="absolute inset-0 bg-transparent"
-                      className="!object-contain p-4 transition duration-500 group-hover:scale-105"
+                      className="!object-contain p-2 transition duration-500 group-hover:scale-105"
                     />
                     {p.badge && (
                       <span
@@ -87,16 +87,36 @@ function CategoryPage() {
                     {p.badge && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.badge}</span>}
                   </div>
                 )}
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: brand }}>{cat.title}</p>
-                  <h3 className="mt-2 text-lg font-bold leading-snug">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-                  <p className="mt-4 flex-1 text-sm leading-7 text-foreground/80">{p.description}</p>
-                  <p className="mt-4 text-xs font-mono text-muted-foreground" style={{ direction: "ltr", textAlign: "right" }}>{p.composition}</p>
+                {/* INFO BOX — textured blurred background per product */}
+                <div className="relative flex flex-1 flex-col overflow-hidden">
+                  {p.texture && (
+                    <>
+                      <img
+                        src={p.texture}
+                        alt=""
+                        aria-hidden
+                        loading="lazy"
+                        decoding="async"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55 blur-[3px] scale-110"
+                      />
+                      <div
+                        className="pointer-events-none absolute inset-0"
+                        style={{ background: `linear-gradient(180deg, ${brand}26 0%, hsl(var(--card)/0.55) 55%, hsl(var(--card)/0.92) 100%)` }}
+                      />
+                    </>
+                  )}
+                  <div className="relative p-6">
+                    <p className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: brand }}>{cat.title}</p>
+                    <h3 className="mt-2 text-lg font-bold leading-snug">{p.name}</h3>
+                    <p className="mt-1 text-sm text-foreground/80">{p.tagline}</p>
+                    <p className="mt-4 flex-1 text-sm leading-7 text-foreground/85">{p.description}</p>
+                    <p className="mt-4 text-xs font-mono text-foreground/70" style={{ direction: "ltr", textAlign: "right" }}>{p.composition}</p>
+                  </div>
                 </div>
               </Link>
             );
           })}
+
 
         </div>
       </section>
