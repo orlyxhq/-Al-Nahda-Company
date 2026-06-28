@@ -185,7 +185,9 @@ function ProductDetail() {
             </div>
           </div>
         </div>
+        </div>
       </section>
+
 
       {/* ============ BENEFITS ============ */}
       {product.benefits && product.benefits.length > 0 && (
