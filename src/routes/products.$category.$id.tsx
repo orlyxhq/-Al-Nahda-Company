@@ -379,22 +379,49 @@ function ProductDetail() {
             <p className="eyebrow" style={{ color: brand }}>المنتجات المكمّلة</p>
             <h2 className="display-2 mt-3 text-balance">برنامج تسميد متكامل</h2>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {complementProducts.map((p) => (
-                <Link
-                  key={p.id}
-                  to="/products/$category/$id"
-                  params={{ category: p.category, id: p.id }}
-                  className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
-                >
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-primary">{cat.title}</p>
-                  <h3 className="mt-2 font-bold transition group-hover:text-primary">{p.name}</h3>
-                  <p className="mt-1 text-xs text-muted-foreground">{p.tagline}</p>
-                </Link>
-              ))}
+              {complementProducts.map((p) => {
+                const pBrand = p.brandColor ?? "hsl(var(--primary))";
+                return (
+                  <Link
+                    key={p.id}
+                    to="/products/$category/$id"
+                    params={{ category: p.category, id: p.id }}
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                  >
+                    {p.image && (
+                      <div
+                        className="relative aspect-[5/4] overflow-hidden"
+                        style={{ background: `radial-gradient(circle at 30% 20%, ${pBrand}33 0%, transparent 65%), ${pBrand}12` }}
+                      >
+                        <LazyImage
+                          src={p.image}
+                          alt={p.name}
+                          wrapperClassName="absolute inset-0 bg-transparent"
+                          className="!object-contain p-2 transition duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <div className="relative flex-1 overflow-hidden">
+                      {p.texture && (
+                        <>
+                          <img src={p.texture} alt="" aria-hidden loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-45 blur-[2px] scale-110" />
+                          <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(180deg, ${pBrand}1a 0%, hsl(var(--card)/0.85) 80%)` }} />
+                        </>
+                      )}
+                      <div className="relative p-5">
+                        <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: pBrand }}>{cat.title}</p>
+                        <h3 className="mt-2 font-bold transition group-hover:text-primary">{p.name}</h3>
+                        <p className="mt-1 text-xs text-foreground/75">{p.tagline}</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
       )}
+
 
       {/* ============ FAQ ============ */}
       {product.faq && product.faq.length > 0 && (
