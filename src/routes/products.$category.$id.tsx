@@ -229,35 +229,60 @@ function ProductDetail() {
         </section>
       )}
 
-      {/* ============ PROBLEMS (linked to /diseases/$id) ============ */}
+      {/* ============ PROBLEMS (full expanded cards linked to /diseases/$id) ============ */}
       {product.problemLinks && product.problemLinks.length > 0 && (
         <section className="container-x py-12 sm:py-16">
           <p className="eyebrow" style={{ color: brand }}>المشاكل التي يساعد على علاجها</p>
-          <h2 className="display-2 mt-3 text-balance">اضغط على المشكلة لقراءة دليلها الكامل</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {product.problemLinks.map((p, i) => (
-              <Link
-                key={p.id}
-                to="/diseases/$id"
-                params={{ id: p.id }}
-                className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-card"
-                style={{ borderInlineStartColor: brand, borderInlineStartWidth: 3 }}
-              >
-                <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                    مشكلة #{String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-1 text-sm font-bold leading-snug group-hover:text-primary">{p.label}</p>
-                </div>
-                <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition group-hover:scale-110"
-                  style={{ background: brand }}
-                >🔍</span>
-              </Link>
-            ))}
+          <h2 className="display-2 mt-3 text-balance">حلول مباشرة لأبرز مشاكل المحصول</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {product.problemLinks.map((p, i) => {
+              const disease = DISEASES.find((d) => d.id === p.id);
+              return (
+                <Link
+                  key={p.id}
+                  to="/diseases/$id"
+                  params={{ id: p.id }}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:shadow-card"
+                >
+                  <div className="flex flex-1 flex-col gap-3 p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <span
+                        className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[11px] font-bold tnum text-white"
+                        style={{ background: brand }}
+                      >{String(i + 1).padStart(2, "0")}</span>
+                      {disease && (
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                          disease.severity === "شديد" ? "bg-destructive/10 text-destructive" :
+                          disease.severity === "متوسّط" ? "bg-gold/15 text-gold" :
+                          "bg-secondary text-foreground/70"
+                        }`}>● {disease.severity}</span>
+                      )}
+                    </div>
+                    <h3 className="text-base font-bold leading-snug">{disease?.name ?? p.label}</h3>
+                    {disease?.scientific && (
+                      <p className="font-mono text-[10px] text-muted-foreground" style={{ direction: "ltr", textAlign: "right" }}>
+                        {disease.scientific}
+                      </p>
+                    )}
+                    <p className="flex-1 text-sm leading-7 text-foreground/80 line-clamp-4">
+                      {disease?.summary ?? p.label}
+                    </p>
+                  </div>
+                  {/* colored CTA bar */}
+                  <div
+                    className="flex items-center justify-between gap-2 px-5 py-3 text-xs font-bold text-white transition group-hover:brightness-110"
+                    style={{ background: brand }}
+                  >
+                    <span>اضغط لقراءة الدليل الكامل</span>
+                    <span className="text-base transition-transform group-hover:-translate-x-1">←</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
+
 
       {/* ============ WHY WE CHOSE THIS ============ */}
       {product.whyChoose && product.whyChoose.length > 0 && (
