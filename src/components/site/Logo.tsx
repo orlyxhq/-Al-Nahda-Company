@@ -11,12 +11,12 @@ export function Logo({ className = "", showText = true }: { className?: string; 
         decoding="async"
       />
       {showText && (
-        <span className="flex flex-col leading-tight">
-          <span className="font-display text-[15px] sm:text-base font-extrabold tracking-tight text-ink whitespace-nowrap">
-            النهضة الزراعية
+        <span className="flex flex-col leading-tight min-w-0">
+          <span className="font-display text-[13px] sm:text-[15px] font-extrabold tracking-tight text-ink whitespace-nowrap">
+            النهضة الزراعية والتجارية
           </span>
-          <span className="mt-0.5 text-[10px] sm:text-[11px] font-medium tracking-[0.14em] text-muted-foreground whitespace-nowrap">
-            والتجارية
+          <span className="mt-0.5 text-[8.5px] sm:text-[10px] font-light tracking-[0.12em] text-primary/70 whitespace-nowrap">
+            Al-Nahda For Agrochemicals AND Trading
           </span>
         </span>
       )}
