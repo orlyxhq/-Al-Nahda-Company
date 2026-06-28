@@ -154,7 +154,7 @@ function ImpactBar() {
 
 /* ============ CATEGORIES ============ */
 function CategoriesSection() {
-  const imgs = [cropWheat, soilHands, heroFields];
+  const imgs = [cropWheat, soilHands, categorySeeds.url];
   return (
     <section className="mt-24 lg:mt-36">
       <div className="container-x">
