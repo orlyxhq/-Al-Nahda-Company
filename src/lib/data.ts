@@ -50,6 +50,7 @@ export type Product = {
   badge?: string;
   /** Optional rich content — when present, product detail renders the full magazine layout */
   image?: string;
+  texture?: string;             // decorative background image (granules/crystals) for cards
   brandColor?: string;          // hex, e.g. #0EA5E9
   brandColorDeep?: string;      // hex, darker shade for gradients
   longDescription?: string;
@@ -67,6 +68,9 @@ export type Product = {
 
 import alraheebImg from "@/assets/alraheeb.webp.asset.json";
 import generalPharmaImg from "@/assets/general-pharma.webp.asset.json";
+import textureRed from "@/assets/texture-red-crystals.webp.asset.json";
+import textureBlue from "@/assets/texture-blue-granules.webp.asset.json";
+
 
 export const PRODUCTS: Product[] = [
   {
