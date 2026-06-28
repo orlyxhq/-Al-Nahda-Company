@@ -672,7 +672,7 @@ const DEFICIENCIES: Disease[] = [
     treatment: [{ title: "تصحيح أرضي", detail: "إضافة سلفات الأمونيوم عبر الري بمعدّل ١٠-٢٠ كجم/هكتار حسب التحليل." }],
     activeIngredients: ["سلفات الأمونيوم", "كبريت ميكروني"],
     faq: [{ q: "هل الكبريت مبيد أم سماد؟", a: "كلاهما؛ يستخدم كمكافح للفطريات وكمصدر لعنصر الكبريت معاً." }],
-    relatedProducts: ["humic-ultra"],
+    relatedProducts: ["alraheeb-top-green"],
     relatedDiseases: ["n-deficiency"],
     relatedSymptoms: ["yellowing-leaves", "stunted-growth"],
   },
@@ -1134,10 +1134,12 @@ export const PRODUCT_ACTIVE_INGREDIENTS: Record<string, string[]> = {
 };
 
 export const PRODUCT_SOLVES_PROBLEMS: Record<string, string[]> = {
+  "alraheeb-top-green": ["n-deficiency", "s-deficiency", "yellowing-leaves", "chlorosis", "stunted-growth"],
+  "general-pharma-npk": ["k-deficiency", "mg-deficiency", "p-deficiency", "flower-drop", "fruit-cracking", "stunted-growth"],
   "npk-prime-20": ["n-deficiency", "p-deficiency", "k-deficiency", "yellowing-leaves", "stunted-growth"],
-  "humic-ultra": ["organic-matter-deficiency", "n-deficiency", "fe-deficiency", "root-damage"],
+  "humic-ultra": ["organic-matter-deficiency", "fe-deficiency", "root-damage"],
   "calmag-pro": ["ca-deficiency", "mg-deficiency", "fruit-rot", "leaf-edge-burn"],
-  "zinc-boost": ["zn-deficiency", "fe-deficiency", "stunted-growth", "chlorosis"],
+  "zinc-boost": ["zn-deficiency", "fe-deficiency", "chlorosis"],
   "agroshield-fx": ["aphids", "whitefly", "thrips", "leaf-miner", "mealybug", "cotton-leafworm", "spider-mite", "corn-borer", "palm-weevil", "leaf-curling"],
   "fungo-stop": ["late-blight", "early-blight", "powdery-mildew", "downy-mildew", "anthracnose", "wheat-rust", "olive-peacock", "grape-downy", "leaf-spots"],
   "weed-clear": [],

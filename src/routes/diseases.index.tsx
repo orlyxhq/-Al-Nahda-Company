@@ -96,26 +96,32 @@ function DiseasesIndex() {
         </div>
       </section>
 
-      {/* ===== DIAGNOSTIC CENTER CTA ===== */}
-      <section className="container-x pt-10 sm:pt-14">
+      {/* ===== DIAGNOSTIC CENTER — thin shiny strip ===== */}
+      <section className="container-x pt-4 sm:pt-6">
         <Link
           to="/diseases/diagnostic"
-          className="group relative block overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-l from-gold/10 via-card to-card p-6 transition hover:border-gold sm:p-8"
+          className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-xl border border-gold/50 px-4 py-2.5 text-primary-foreground shadow-card transition hover:border-gold sm:px-5 sm:py-3"
+          style={{
+            backgroundImage: `linear-gradient(95deg, rgba(20,40,30,0.92) 0%, rgba(20,40,30,0.78) 55%, rgba(20,40,30,0.55) 100%), url(${diseaseLeaf})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          {/* glossy sweep */}
+          <span className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent transition-all duration-700 group-hover:left-full" />
+          <div className="flex min-w-0 items-center gap-3">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-base shadow-sm">🔬</span>
             <div className="min-w-0">
-              <p className="eyebrow text-gold">جديد · مركز التشخيص الذكي</p>
-              <h2 className="mt-3 text-xl font-bold sm:text-2xl balance">شخّص مشكلة محصولك في ٣ خطوات</h2>
-              <p className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground balance">
-                اختر المحصول، حدّد العَرَض، احصل على الأسباب المحتملة مرتّبة بالاحتمالية ومنتجات مقترحة للحلّ.
-              </p>
+              <p className="truncate text-[10px] font-bold uppercase tracking-[0.18em] text-gold">مركز التشخيص الذكي</p>
+              <p className="truncate text-xs font-bold leading-tight text-primary-foreground sm:text-sm">شخّص محصولك في ٣ خطوات سريعة</p>
             </div>
-            <span className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-3 text-sm font-bold text-gold-foreground transition group-hover:bg-gold/90">
-              ابدأ التشخيص <span>←</span>
-            </span>
           </div>
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-gold px-3 py-1.5 text-[11px] font-bold text-gold-foreground sm:text-xs">
+            ابدأ ←
+          </span>
         </Link>
       </section>
+
 
 
 

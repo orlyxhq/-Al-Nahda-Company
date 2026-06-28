@@ -3,6 +3,8 @@ import heroFields from "@/assets/hero-fields.webp";
 import soilHands from "@/assets/soil-hands.webp";
 import diseaseLeaf from "@/assets/disease-leaf.webp";
 import cropWheat from "@/assets/crop-wheat.webp";
+import categorySeeds from "@/assets/category-seeds.webp.asset.json";
+
 import { LazyImage } from "@/components/site/LazyImage";
 import {
   PRODUCT_CATEGORIES,
@@ -152,7 +154,7 @@ function ImpactBar() {
 
 /* ============ CATEGORIES ============ */
 function CategoriesSection() {
-  const imgs = [cropWheat, soilHands, heroFields];
+  const imgs = [cropWheat, soilHands, categorySeeds.url];
   return (
     <section className="mt-24 lg:mt-36">
       <div className="container-x">

@@ -50,16 +50,36 @@ function ProductDetail() {
   return (
     <>
       {/* ============ HERO ============ */}
-      <section
-        className="relative overflow-hidden border-b border-border"
-        style={
-          isRich
-            ? {
-                background: `linear-gradient(135deg, ${brand}14 0%, ${brandDeep}22 60%, transparent 100%)`,
-              }
-            : undefined
-        }
-      >
+      <section className="relative overflow-hidden border-b border-border">
+        {/* Texture background — visible at top, fades out toward info boxes */}
+        {product.texture && (
+          <>
+            <img
+              src={product.texture}
+              alt=""
+              aria-hidden
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: `linear-gradient(180deg, ${brand}26 0%, ${brand}1a 30%, hsl(var(--background)/0.55) 60%, hsl(var(--background)/0.92) 90%, hsl(var(--background)) 100%)`,
+                backdropFilter: "blur(1.5px)",
+              }}
+            />
+          </>
+        )}
+        {!product.texture && isRich && (
+          <div
+            className="absolute inset-0"
+            style={{ background: `linear-gradient(135deg, ${brand}14 0%, ${brandDeep}22 60%, transparent 100%)` }}
+          />
+        )}
+
+        <div className="relative">
         <div className="container-x py-8 sm:py-12">
           <Link
             to="/products/$category"
@@ -68,7 +88,7 @@ function ProductDetail() {
           >
             <span>→</span> العودة إلى {cat.title}
           </Link>
-          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-foreground/75">
             <Link to="/products" className="hover:text-foreground">المنتجات</Link>
             <span>/</span>
             <Link to="/products/$category" params={{ category: cat.slug }} className="hover:text-foreground">{cat.title}</Link>
@@ -78,18 +98,18 @@ function ProductDetail() {
         </div>
 
         <div className="container-x grid gap-10 pb-12 sm:pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pb-20">
-          {/* Image */}
+          {/* Image — large, fills container */}
           <div className="order-2 lg:order-1">
             {product.image ? (
               <div
-                className="relative aspect-square overflow-hidden rounded-3xl border border-border/60 shadow-card"
-                style={{ background: `radial-gradient(circle at 30% 20%, ${brand}33 0%, transparent 60%), linear-gradient(160deg, ${brandDeep}1a, transparent)` }}
+                className="relative aspect-square overflow-hidden rounded-3xl border border-border/60 bg-background/60 shadow-card backdrop-blur-sm"
+                style={{ background: `radial-gradient(circle at 30% 20%, ${brand}40 0%, hsl(var(--background)/0.85) 70%)` }}
               >
                 <LazyImage
                   src={product.image}
                   alt={product.name}
                   wrapperClassName="absolute inset-0 bg-transparent"
-                  className="!object-contain p-6 sm:p-10"
+                  className="!object-contain p-1 sm:p-2"
                   fetchPriority="high"
                   loading="eager"
                 />
@@ -111,6 +131,7 @@ function ProductDetail() {
               </div>
             )}
           </div>
+
 
           {/* Info */}
           <div className="order-1 lg:order-2">
@@ -164,7 +185,9 @@ function ProductDetail() {
             </div>
           </div>
         </div>
+        </div>
       </section>
+
 
       {/* ============ BENEFITS ============ */}
       {product.benefits && product.benefits.length > 0 && (
@@ -206,35 +229,60 @@ function ProductDetail() {
         </section>
       )}
 
-      {/* ============ PROBLEMS (linked to /diseases/$id) ============ */}
+      {/* ============ PROBLEMS (full expanded cards linked to /diseases/$id) ============ */}
       {product.problemLinks && product.problemLinks.length > 0 && (
         <section className="container-x py-12 sm:py-16">
           <p className="eyebrow" style={{ color: brand }}>المشاكل التي يساعد على علاجها</p>
-          <h2 className="display-2 mt-3 text-balance">اضغط على المشكلة لقراءة دليلها الكامل</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {product.problemLinks.map((p, i) => (
-              <Link
-                key={p.id}
-                to="/diseases/$id"
-                params={{ id: p.id }}
-                className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-card"
-                style={{ borderInlineStartColor: brand, borderInlineStartWidth: 3 }}
-              >
-                <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                    مشكلة #{String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-1 text-sm font-bold leading-snug group-hover:text-primary">{p.label}</p>
-                </div>
-                <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition group-hover:scale-110"
-                  style={{ background: brand }}
-                >🔍</span>
-              </Link>
-            ))}
+          <h2 className="display-2 mt-3 text-balance">حلول مباشرة لأبرز مشاكل المحصول</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {product.problemLinks.map((p, i) => {
+              const disease = DISEASES.find((d) => d.id === p.id);
+              return (
+                <Link
+                  key={p.id}
+                  to="/diseases/$id"
+                  params={{ id: p.id }}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:shadow-card"
+                >
+                  <div className="flex flex-1 flex-col gap-3 p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <span
+                        className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[11px] font-bold tnum text-white"
+                        style={{ background: brand }}
+                      >{String(i + 1).padStart(2, "0")}</span>
+                      {disease && (
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                          disease.severity === "شديد" ? "bg-destructive/10 text-destructive" :
+                          disease.severity === "متوسّط" ? "bg-gold/15 text-gold" :
+                          "bg-secondary text-foreground/70"
+                        }`}>● {disease.severity}</span>
+                      )}
+                    </div>
+                    <h3 className="text-base font-bold leading-snug">{disease?.name ?? p.label}</h3>
+                    {disease?.scientific && (
+                      <p className="font-mono text-[10px] text-muted-foreground" style={{ direction: "ltr", textAlign: "right" }}>
+                        {disease.scientific}
+                      </p>
+                    )}
+                    <p className="flex-1 text-sm leading-7 text-foreground/80 line-clamp-4">
+                      {disease?.summary ?? p.label}
+                    </p>
+                  </div>
+                  {/* colored CTA bar */}
+                  <div
+                    className="flex items-center justify-between gap-2 px-5 py-3 text-xs font-bold text-white transition group-hover:brightness-110"
+                    style={{ background: brand }}
+                  >
+                    <span>اضغط لقراءة الدليل الكامل</span>
+                    <span className="text-base transition-transform group-hover:-translate-x-1">←</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
+
 
       {/* ============ WHY WE CHOSE THIS ============ */}
       {product.whyChoose && product.whyChoose.length > 0 && (
@@ -331,22 +379,49 @@ function ProductDetail() {
             <p className="eyebrow" style={{ color: brand }}>المنتجات المكمّلة</p>
             <h2 className="display-2 mt-3 text-balance">برنامج تسميد متكامل</h2>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {complementProducts.map((p) => (
-                <Link
-                  key={p.id}
-                  to="/products/$category/$id"
-                  params={{ category: p.category, id: p.id }}
-                  className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
-                >
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-primary">{cat.title}</p>
-                  <h3 className="mt-2 font-bold transition group-hover:text-primary">{p.name}</h3>
-                  <p className="mt-1 text-xs text-muted-foreground">{p.tagline}</p>
-                </Link>
-              ))}
+              {complementProducts.map((p) => {
+                const pBrand = p.brandColor ?? "hsl(var(--primary))";
+                return (
+                  <Link
+                    key={p.id}
+                    to="/products/$category/$id"
+                    params={{ category: p.category, id: p.id }}
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                  >
+                    {p.image && (
+                      <div
+                        className="relative aspect-[5/4] overflow-hidden"
+                        style={{ background: `radial-gradient(circle at 30% 20%, ${pBrand}33 0%, transparent 65%), ${pBrand}12` }}
+                      >
+                        <LazyImage
+                          src={p.image}
+                          alt={p.name}
+                          wrapperClassName="absolute inset-0 bg-transparent"
+                          className="!object-contain p-2 transition duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <div className="relative flex-1 overflow-hidden">
+                      {p.texture && (
+                        <>
+                          <img src={p.texture} alt="" aria-hidden loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-45 blur-[2px] scale-110" />
+                          <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(180deg, ${pBrand}1a 0%, hsl(var(--card)/0.85) 80%)` }} />
+                        </>
+                      )}
+                      <div className="relative p-5">
+                        <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: pBrand }}>{cat.title}</p>
+                        <h3 className="mt-2 font-bold transition group-hover:text-primary">{p.name}</h3>
+                        <p className="mt-1 text-xs text-foreground/75">{p.tagline}</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
       )}
+
 
       {/* ============ FAQ ============ */}
       {product.faq && product.faq.length > 0 && (
