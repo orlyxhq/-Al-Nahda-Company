@@ -85,8 +85,9 @@ export const PRODUCTS: Product[] = [
     cropTags: ["قمح", "ذرة", "بطاطس", "طماطم", "خيار", "عنب", "نخيل", "قات"],
     badge: "إطلاق جديد",
     image: alraheebImg.url,
-    brandColor: "#0EA5E9",
-    brandColorDeep: "#075985",
+    texture: textureRed.url,
+    brandColor: "#DC2626",
+    brandColorDeep: "#7F1D1D",
     longDescription:
       "يجمع «الرهيب توب جرين» بين عنصرَي النيتروجين والكبريت في تركيبة واحدة سهلة الذوبان، مما يجعله خياراً مثالياً لبرامج التسميد الاحترافية. يدعم النموّ الخضري المبكّر، يُحسّن لون الأوراق، ويُعزّز تكوين البروتينات والأحماض الأمينية داخل النبات.",
     quickInfo: [
@@ -168,8 +169,9 @@ export const PRODUCTS: Product[] = [
     cropTags: ["طماطم", "خيار", "فلفل", "باذنجان", "بطّيخ", "عنب", "موالح", "مانجو", "نخيل"],
     badge: "الأكثر طلباً",
     image: generalPharmaImg.url,
-    brandColor: "#15803D",
-    brandColorDeep: "#064E3B",
+    texture: textureBlue.url,
+    brandColor: "#0EA5E9",
+    brandColorDeep: "#075985",
     longDescription:
       "سماد مركّب متوازن يجمع بين النيتروجين والفوسفور والبوتاسيوم بنسبة عالية من البوتاسيوم، إلى جانب المغنيسيوم والعناصر الصغرى. صُمِّم خصيصاً لرفع جودة الثمار وحجمها ونسبة السكريات، وزيادة قدرة النبات على تحمّل الإجهادات الحرارية والصقيع.",
     quickInfo: [
