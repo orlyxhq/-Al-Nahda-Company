@@ -137,7 +137,7 @@ function Hero() {
 /* ============ IMPACT BAR ============ */
 function ImpactBar() {
   return (
-    <section className="mt-20 lg:mt-28">
+    <section className="mt-12 lg:mt-16">
       <div className="container-x">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
           {STATS.map((s) => (
@@ -156,7 +156,7 @@ function ImpactBar() {
 function CategoriesSection() {
   const imgs = [cropWheat, soilHands, categorySeeds.url];
   return (
-    <section className="mt-24 lg:mt-36">
+    <section className="mt-14 lg:mt-20">
       <div className="container-x">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
@@ -212,7 +212,7 @@ function CategoriesSection() {
 function DiseasesShowcase() {
   const featured = DISEASES.slice(0, 4);
   return (
-    <section className="mt-28 lg:mt-40">
+    <section className="mt-16 lg:mt-24">
       <div className="container-x">
         <div className="relative overflow-hidden rounded-2xl border border-border bg-ink text-primary-foreground sm:rounded-3xl">
           <div className="absolute inset-0 opacity-30">
@@ -295,7 +295,7 @@ function WhyUs() {
     { num: "٠٤", title: "برامج موسمية مدروسة", text: "خطط تغذية ووقاية متكاملة مصمّمة لمحصولك ومنطقتك المناخية." },
   ];
   return (
-    <section className="mt-28 lg:mt-40">
+    <section className="mt-16 lg:mt-24">
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.3fr]">
         <div>
           <p className="eyebrow">لماذا النهضة الزراعية والتجارية</p>
@@ -329,7 +329,7 @@ function WhyUs() {
 function KnowledgePreview() {
   const featured = ARTICLES.slice(0, 3);
   return (
-    <section className="mt-28 lg:mt-40">
+    <section className="mt-16 lg:mt-24">
       <div className="container-x">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
@@ -375,7 +375,7 @@ function KnowledgePreview() {
 /* ============ TESTIMONIALS ============ */
 function Testimonials() {
   return (
-    <section className="mt-28 lg:mt-40">
+    <section className="mt-16 lg:mt-24">
       <div className="container-x">
         <p className="eyebrow">شهادات</p>
         <h2 className="display-2 mt-5 max-w-2xl">يثق بنا من يفهم الحقل عن قرب.</h2>
@@ -401,7 +401,7 @@ function Testimonials() {
 /* ============ CONTACT CTA ============ */
 function ContactCta() {
   return (
-    <section className="mt-28 lg:mt-40">
+    <section className="mt-16 lg:mt-24">
       <div className="container-x">
         <div className="relative overflow-hidden rounded-3xl bg-primary p-10 text-primary-foreground md:p-16">
           <div className="absolute inset-0 ag-grain opacity-40" />
