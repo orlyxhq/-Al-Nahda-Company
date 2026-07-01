@@ -137,7 +137,7 @@ function ProductDetail() {
 
 
           {/* Info */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 rounded-3xl bg-background/85 p-5 sm:p-7 backdrop-blur-md border border-border/60 shadow-card">
             <p
               className="text-[11px] font-bold uppercase tracking-[0.22em]"
               style={{ color: brand }}
