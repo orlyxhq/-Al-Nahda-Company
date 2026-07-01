@@ -64,7 +64,7 @@ function ProductDetail() {
               className="absolute inset-0 h-full w-full object-cover"
             />
             {/* Darkening layer to reduce distraction */}
-            <div className="absolute inset-0 bg-black/55" />
+            <div className="absolute inset-0 bg-black/40" />
             {/* Brand tint + fade into page background at the bottom */}
             <div
               className="absolute inset-0"
