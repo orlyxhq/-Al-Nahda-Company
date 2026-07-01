@@ -92,7 +92,7 @@ function DiseaseDetail() {
       </section>
 
       {/* BODY */}
-      <div className="container-x grid gap-8 py-8 lg:grid-cols-[220px_1fr]">
+      <div className="container-x grid gap-6 py-8 lg:grid-cols-[220px_1fr]">
         {/* TOC */}
         <aside className="hidden lg:block">
           <nav className="sticky top-24 space-y-1 border-r border-border pr-5">
