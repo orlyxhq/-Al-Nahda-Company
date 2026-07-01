@@ -114,9 +114,8 @@ function CategoryPage() {
                     </div>
                   </div>
                 </div>
-
-                </div>
               </Link>
+
             );
           })}
 
