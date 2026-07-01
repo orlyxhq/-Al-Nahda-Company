@@ -340,68 +340,23 @@ function ProductDetail() {
       )}
 
 
-      {/* ============ WHY WE CHOSE THIS ============ */}
-      {product.whyChoose && product.whyChoose.length > 0 && (
-        <section
-          className="border-y border-border"
-          style={{ background: `linear-gradient(135deg, ${brand}10, transparent 60%)` }}
-        >
-          <div className="container-x py-12 sm:py-16">
-            <p className="eyebrow" style={{ color: brand }}>⭐ خلاصة المنتج</p>
-            <h2 className="display-2 mt-3 text-balance">لماذا اخترنا هذا السماد؟</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {product.whyChoose.map((w) => (
-                <div
-                  key={w.title}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-sm"
-                  style={{ borderTop: `3px solid ${brand}` }}
-                >
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">{w.title}</p>
-                  <p className="mt-2 text-base font-bold leading-snug">{w.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ============ TECHNICAL ============ */}
-      {product.technical && product.technical.length > 0 && (
-        <section className="container-x py-12 sm:py-16">
-          <p className="eyebrow" style={{ color: brand }}>التركيب والمواصفات الفنية</p>
-          <h2 className="display-2 mt-3 text-balance">تركيبة دقيقة وعناصر موزونة</h2>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-border">
-            <table className="w-full text-sm">
-              <tbody>
-                {product.technical.map((t, i) => (
-                  <tr key={t.label} className={i % 2 === 0 ? "bg-card" : "bg-secondary/40"}>
-                    <td className="p-4 text-muted-foreground">{t.label}</td>
-                    <td className="p-4 text-end font-mono font-bold" style={{ direction: "ltr" }}>{t.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      )}
-
       {/* ============ USAGE ============ */}
       {product.usage && product.usage.length > 0 && (
-        <section className="border-y border-border bg-secondary/40">
-          <div className="container-x py-12 sm:py-16">
+        <section className="border-y border-border bg-gradient-to-l from-secondary/60 to-background">
+          <div className="container-x py-8 sm:py-10">
             <p className="eyebrow" style={{ color: brand }}>طريقة الاستخدام</p>
-            <h2 className="display-2 mt-3 text-balance">برنامج تطبيق مرن لكل محصول</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <h2 className="display-2 mt-2 text-balance">برنامج تطبيق مرن لكل محصول</h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {product.usage.map((u, i) => (
-                <div key={u.title} className="rounded-2xl border border-border bg-card p-6">
-                  <div className="flex items-center gap-3">
+                <div key={u.title} className="rounded-xl border border-border bg-card px-4 py-3.5">
+                  <div className="flex items-center gap-2.5">
                     <span
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
                       style={{ background: brand }}
                     >{i + 1}</span>
-                    <h3 className="font-bold">{u.title}</h3>
+                    <h3 className="text-sm font-bold">{u.title}</h3>
                   </div>
-                  <p className="mt-3 text-sm leading-7 text-foreground/80">{u.detail}</p>
+                  <p className="mt-2 text-[13px] leading-6 text-foreground/80">{u.detail}</p>
                 </div>
               ))}
             </div>
@@ -411,22 +366,23 @@ function ProductDetail() {
 
       {/* ============ STAGES ============ */}
       {product.stages && product.stages.length > 0 && (
-        <section className="container-x py-12 sm:py-16">
+        <section className="container-x py-8 sm:py-10">
           <p className="eyebrow" style={{ color: brand }}>مراحل الاستخدام</p>
-          <h2 className="display-2 mt-3 text-balance">متى يعطي أفضل أداء؟</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="display-2 mt-2 text-balance">متى يعطي أفضل أداء؟</h2>
+          <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
             {product.stages.map((s) => (
-              <div key={s.name} className="rounded-2xl border border-border bg-card p-5">
-                <p className="text-sm font-bold">{s.name}</p>
-                <p className="mt-2 text-base" style={{ color: brand }}>
+              <div key={s.name} className="rounded-xl border border-border bg-card px-4 py-3">
+                <p className="text-[13px] font-bold">{s.name}</p>
+                <p className="mt-1 text-sm" style={{ color: brand }}>
                   {"★".repeat(s.rating)}<span className="text-muted-foreground/40">{"★".repeat(5 - s.rating)}</span>
                 </p>
-                {s.note && <p className="mt-1 text-xs text-muted-foreground">{s.note}</p>}
+                {s.note && <p className="mt-0.5 text-[11px] text-muted-foreground">{s.note}</p>}
               </div>
             ))}
           </div>
         </section>
       )}
+
 
       {/* ============ COMPLEMENTS ============ */}
       {complementProducts.length > 0 && (
