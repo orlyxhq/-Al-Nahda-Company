@@ -194,19 +194,70 @@ function ProductDetail() {
       </section>
 
 
+      {/* ============ TECHNICAL (moved to first) ============ */}
+      {product.technical && product.technical.length > 0 && (
+        <section className="border-b border-border bg-secondary/30">
+          <div className="container-x py-8 sm:py-10">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="eyebrow" style={{ color: brand }}>التركيب والمواصفات الفنية</p>
+                <h2 className="display-2 mt-2 text-balance">تركيبة دقيقة وعناصر موزونة</h2>
+              </div>
+            </div>
+            <div className="mt-5 overflow-hidden rounded-xl border border-border shadow-sm">
+              <table className="w-full text-sm">
+                <tbody>
+                  {product.technical.map((t, i) => (
+                    <tr key={t.label} className={i % 2 === 0 ? "bg-card" : "bg-background"}>
+                      <td className="px-4 py-2.5 text-muted-foreground">{t.label}</td>
+                      <td className="px-4 py-2.5 text-end font-mono font-bold" style={{ direction: "ltr" }}>{t.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============ WHY WE CHOSE THIS (second) ============ */}
+      {product.whyChoose && product.whyChoose.length > 0 && (
+        <section
+          className="relative overflow-hidden border-b border-border"
+          style={{ background: `linear-gradient(135deg, ${brand}18 0%, ${brandDeep}0d 55%, transparent 100%)` }}
+        >
+          <div className="container-x py-8 sm:py-10">
+            <p className="eyebrow" style={{ color: brand }}>⭐ خلاصة المنتج</p>
+            <h2 className="display-2 mt-2 text-balance">لماذا اخترنا هذا السماد؟</h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {product.whyChoose.map((w) => (
+                <div
+                  key={w.title}
+                  className="rounded-xl bg-card p-4 shadow-sm ring-1 ring-black/5"
+                  style={{ borderTop: `3px solid ${brand}` }}
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{w.title}</p>
+                  <p className="mt-1.5 text-sm font-bold leading-snug">{w.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ============ BENEFITS ============ */}
       {product.benefits && product.benefits.length > 0 && (
-        <section className="container-x py-12 sm:py-16">
+        <section className="container-x py-8 sm:py-10">
           <p className="eyebrow" style={{ color: brand }}>الفوائد الرئيسية</p>
-          <h2 className="display-2 mt-3 text-balance">لماذا يصنع فرقاً في حقلك؟</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="display-2 mt-2 text-balance">لماذا يصنع فرقاً في حقلك؟</h2>
+          <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {product.benefits.map((b, i) => (
-              <div key={i} className="flex gap-3 rounded-xl border border-border bg-card p-5">
+              <div key={i} className="flex gap-2.5 rounded-lg border border-border bg-card px-3.5 py-3">
                 <span
-                  className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
                   style={{ background: brand }}
                 >✓</span>
-                <p className="text-sm leading-7 text-foreground/85">{b}</p>
+                <p className="text-[13px] leading-6 text-foreground/85">{b}</p>
               </div>
             ))}
           </div>
@@ -215,18 +266,18 @@ function ProductDetail() {
 
       {/* ============ CROPS ============ */}
       {product.cropList && product.cropList.length > 0 && (
-        <section className="border-y border-border bg-secondary/40">
-          <div className="container-x py-12 sm:py-16">
+        <section className="relative border-y border-border bg-gradient-to-br from-secondary/60 via-secondary/30 to-background">
+          <div className="container-x py-8 sm:py-10">
             <p className="eyebrow" style={{ color: brand }}>المحاصيل المناسبة</p>
-            <h2 className="display-2 mt-3 text-balance">يخدم باقة واسعة من المحاصيل</h2>
-            <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+            <h2 className="display-2 mt-2 text-balance">يخدم باقة واسعة من المحاصيل</h2>
+            <div className="mt-5 grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-8">
               {product.cropList.map((c) => (
                 <div
                   key={c.name}
-                  className="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center transition hover:-translate-y-0.5 hover:shadow-card"
+                  className="group flex flex-col items-center gap-1 rounded-xl border border-border bg-card px-2 py-2.5 text-center transition hover:-translate-y-0.5 hover:shadow-sm"
                 >
-                  <span className="text-3xl">{c.emoji}</span>
-                  <span className="text-xs font-bold">{c.name}</span>
+                  <span className="text-2xl">{c.emoji}</span>
+                  <span className="text-[11px] font-bold leading-tight">{c.name}</span>
                 </div>
               ))}
             </div>
@@ -236,10 +287,10 @@ function ProductDetail() {
 
       {/* ============ PROBLEMS (full expanded cards linked to /diseases/$id) ============ */}
       {product.problemLinks && product.problemLinks.length > 0 && (
-        <section className="container-x py-12 sm:py-16">
+        <section className="container-x py-8 sm:py-10">
           <p className="eyebrow" style={{ color: brand }}>المشاكل التي يساعد على علاجها</p>
-          <h2 className="display-2 mt-3 text-balance">حلول مباشرة لأبرز مشاكل المحصول</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="display-2 mt-2 text-balance">حلول مباشرة لأبرز مشاكل المحصول</h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {product.problemLinks.map((p, i) => {
               const disease = DISEASES.find((d) => d.id === p.id);
               return (
