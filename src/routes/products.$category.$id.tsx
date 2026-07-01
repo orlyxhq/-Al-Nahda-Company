@@ -501,20 +501,49 @@ function ProductDetail() {
         <section className="container-x py-14">
           <div className="ribbon-divider mb-12" />
           <h2 className="display-2">منتجات ذات صلة</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {related.map((p) => (
-              <Link
-                key={p.id}
-                to="/products/$category/$id"
-                params={{ category: p.category, id: p.id }}
-                className="group rounded-xl border border-border bg-card p-6 transition hover:border-primary hover:shadow-card"
-              >
-                <p className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">{cat.title}</p>
-                <h3 className="mt-3 text-lg font-bold">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-              </Link>
-            ))}
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+            {related.map((p) => {
+              const pBrand = p.brandColor ?? "hsl(var(--primary))";
+              return (
+                <Link
+                  key={p.id}
+                  to="/products/$category/$id"
+                  params={{ category: p.category, id: p.id }}
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                >
+                  {p.image && (
+                    <div
+                      className="relative aspect-square overflow-hidden"
+                      style={{ background: `radial-gradient(circle at 30% 20%, ${pBrand}33 0%, transparent 65%), ${pBrand}12` }}
+                    >
+                      <LazyImage
+                        src={p.image}
+                        alt={p.name}
+                        wrapperClassName="absolute inset-0 bg-transparent"
+                        className="!object-contain p-3 transition duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="relative flex flex-1 flex-col overflow-hidden">
+                    {p.texture && (
+                      <>
+                        <img src={p.texture} alt="" aria-hidden loading="lazy" decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-cover" />
+                        <div className="pointer-events-none absolute inset-0 bg-black/25" />
+                      </>
+                    )}
+                    <div className="relative p-4">
+                      <div className="rounded-2xl bg-white/80 backdrop-blur-sm p-4 shadow-sm ring-1 ring-black/5">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: pBrand }}>{cat.title}</p>
+                        <h3 className="mt-1.5 text-base font-bold leading-snug text-ink">{p.name}</h3>
+                        <p className="mt-1 text-sm text-ink/75">{p.tagline}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+
         </section>
       )}
     </>
