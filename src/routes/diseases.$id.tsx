@@ -74,7 +74,7 @@ function DiseaseDetail() {
               <p className="mt-3 break-words font-mono text-xs text-muted-foreground sm:text-sm" style={{direction:"ltr", textAlign:"right"}}>
                 {disease.scientific}
               </p>
-              <p className="mt-5 text-base leading-7 text-foreground/85 sm:text-lg sm:leading-8 balance">{disease.summary}</p>
+              <p className="mt-5 text-base leading-6 text-foreground/85 sm:text-lg sm:leading-8 balance">{disease.summary}</p>
 
               <div className="mt-5 flex flex-wrap gap-1.5">
                 <span className="text-xs text-muted-foreground self-center">المحاصيل المتأثّرة:</span>
@@ -111,7 +111,7 @@ function DiseaseDetail() {
             {disease.role && (
               <div className="mt-5 rounded-xl border border-primary/30 bg-primary/5 p-5">
                 <p className="text-xs font-bold tracking-[0.18em] uppercase text-primary">دور العنصر في النبات</p>
-                <p className="mt-2 text-sm leading-7 text-foreground/85">{disease.role}</p>
+                <p className="mt-2 text-sm leading-6 text-foreground/85">{disease.role}</p>
               </div>
             )}
           </Section>
@@ -126,11 +126,11 @@ function DiseaseDetail() {
             <Section id="lifecycle" title="دورة الحياة">
               <ol className="grid gap-3 sm:grid-cols-2">
                 {disease.lifeCycle.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4">
+                  <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-background px-3.5 py-2.5">
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold/15 text-xs font-bold text-gold tnum">
                       {i + 1}
                     </span>
-                    <p className="text-sm leading-7 text-foreground/85">{step}</p>
+                    <p className="text-sm leading-6 text-foreground/85">{step}</p>
                   </li>
                 ))}
               </ol>
@@ -153,7 +153,7 @@ function DiseaseDetail() {
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-destructive/10 text-xs font-bold text-destructive tnum">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-sm leading-7 text-foreground/85">{r}</p>
+                    <p className="text-sm leading-6 text-foreground/85">{r}</p>
                   </div>
                 </div>
               ))}
@@ -320,9 +320,9 @@ function ChecklistGrid({ items, tone }: { items: string[]; tone: "warning" | "su
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
       {items.map((s, i) => (
-        <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4">
+        <li key={i} className="flex items-start gap-3 rounded-lg border border-border bg-background px-3.5 py-2.5">
           <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-md border text-xs font-bold ${color}`}>{icon}</span>
-          <p className="text-sm leading-7 text-foreground/85">{s}</p>
+          <p className="text-sm leading-6 text-foreground/85">{s}</p>
         </li>
       ))}
     </ul>
