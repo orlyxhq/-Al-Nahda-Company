@@ -51,9 +51,9 @@ function ProductDetail() {
     <>
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden border-b border-border">
-        {/* Texture background — visible at top, fades out toward info boxes */}
+        {/* Texture background — limited-height band at top with dark overlay for legibility */}
         {product.texture && (
-          <>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[380px] sm:h-[460px] overflow-hidden">
             <img
               src={product.texture}
               alt=""
@@ -61,17 +61,20 @@ function ProductDetail() {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+              className="absolute inset-0 h-full w-full object-cover"
             />
+            {/* Darkening layer to reduce distraction */}
+            <div className="absolute inset-0 bg-black/40" />
+            {/* Brand tint + fade into page background at the bottom */}
             <div
-              className="pointer-events-none absolute inset-0"
+              className="absolute inset-0"
               style={{
-                background: `linear-gradient(180deg, ${brand}26 0%, ${brand}1a 30%, hsl(var(--background)/0.55) 60%, hsl(var(--background)/0.92) 90%, hsl(var(--background)) 100%)`,
-                backdropFilter: "blur(1.5px)",
+                background: `linear-gradient(180deg, ${brandDeep}55 0%, transparent 45%, hsl(var(--background)/0.85) 88%, hsl(var(--background)) 100%)`,
               }}
             />
-          </>
+          </div>
         )}
+
         {!product.texture && isRich && (
           <div
             className="absolute inset-0"
@@ -88,13 +91,15 @@ function ProductDetail() {
           >
             <span>→</span> العودة إلى {cat.title}
           </Link>
-          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-foreground/75">
-            <Link to="/products" className="hover:text-foreground">المنتجات</Link>
+          <nav className={`mt-4 flex flex-wrap items-center gap-2 text-xs ${product.texture ? "text-white/85 [text-shadow:0_1px_2px_rgb(0_0_0_/_0.4)]" : "text-foreground/75"}`}>
+            <Link to="/products" className="hover:opacity-90">المنتجات</Link>
             <span>/</span>
-            <Link to="/products/$category" params={{ category: cat.slug }} className="hover:text-foreground">{cat.title}</Link>
+            <Link to="/products/$category" params={{ category: cat.slug }} className="hover:opacity-90">{cat.title}</Link>
             <span>/</span>
-            <span className="text-foreground">{product.name}</span>
+            <span className={product.texture ? "text-white" : "text-foreground"}>{product.name}</span>
           </nav>
+
+
         </div>
 
         <div className="container-x grid gap-10 pb-12 sm:pb-16 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pb-20">
@@ -134,7 +139,7 @@ function ProductDetail() {
 
 
           {/* Info */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 rounded-3xl bg-background/85 p-5 sm:p-7 backdrop-blur-md border border-border/60 shadow-card">
             <p
               className="text-[11px] font-bold uppercase tracking-[0.22em]"
               style={{ color: brand }}

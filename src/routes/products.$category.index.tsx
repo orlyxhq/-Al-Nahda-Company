@@ -97,23 +97,25 @@ function CategoryPage() {
                         aria-hidden
                         loading="lazy"
                         decoding="async"
-                        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55 blur-[3px] scale-110"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
                       />
-                      <div
-                        className="pointer-events-none absolute inset-0"
-                        style={{ background: `linear-gradient(180deg, ${brand}26 0%, hsl(var(--card)/0.55) 55%, hsl(var(--card)/0.92) 100%)` }}
-                      />
+                      {/* Subtle darkening so the whole card feels cohesive */}
+                      <div className="pointer-events-none absolute inset-0 bg-black/25" />
                     </>
                   )}
-                  <div className="relative p-6">
-                    <p className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: brand }}>{cat.title}</p>
-                    <h3 className="mt-2 text-lg font-bold leading-snug">{p.name}</h3>
-                    <p className="mt-1 text-sm text-foreground/80">{p.tagline}</p>
-                    <p className="mt-4 flex-1 text-sm leading-7 text-foreground/85">{p.description}</p>
-                    <p className="mt-4 text-xs font-mono text-foreground/70" style={{ direction: "ltr", textAlign: "right" }}>{p.composition}</p>
+                  <div className="relative p-4">
+                    {/* White frosted box hugging ONLY the text so the granule texture stays visible around it */}
+                    <div className="rounded-2xl bg-white/80 backdrop-blur-sm p-4 shadow-sm ring-1 ring-black/5">
+                      <p className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: brand }}>{cat.title}</p>
+                      <h3 className="mt-1.5 text-lg font-bold leading-snug text-ink">{p.name}</h3>
+                      <p className="mt-1 text-sm text-ink/75">{p.tagline}</p>
+                      <p className="mt-3 text-sm leading-7 text-ink/85">{p.description}</p>
+                      <p className="mt-3 text-xs font-mono text-ink/70" style={{ direction: "ltr", textAlign: "right" }}>{p.composition}</p>
+                    </div>
                   </div>
                 </div>
               </Link>
+
             );
           })}
 
