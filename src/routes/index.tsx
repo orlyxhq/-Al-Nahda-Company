@@ -295,7 +295,7 @@ function WhyUs() {
     { num: "٠٤", title: "برامج موسمية مدروسة", text: "خطط تغذية ووقاية متكاملة مصمّمة لمحصولك ومنطقتك المناخية." },
   ];
   return (
-    <section className="mt-16 lg:mt-24">
+    <section className="mt-16 lg:mt-24 border-y border-border bg-gradient-to-br from-secondary/60 via-background to-primary/5 py-14 lg:py-20">
       <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.3fr]">
         <div>
           <p className="eyebrow">لماذا النهضة الزراعية والتجارية</p>
