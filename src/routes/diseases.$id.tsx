@@ -301,12 +301,12 @@ function DiseaseDetail() {
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-28">
-      <div className="flex items-center gap-4">
-        <span className="h-px flex-1 bg-border" />
-        <h2 className="font-display text-2xl font-bold text-ink">{title}</h2>
+    <section id={id} className="scroll-mt-28 rounded-2xl border border-border bg-card/60 p-5 sm:p-6 shadow-sm">
+      <div className="flex items-center gap-3">
+        <span className="inline-block h-6 w-1.5 rounded-full bg-primary" />
+        <h2 className="font-display text-xl sm:text-2xl font-bold text-ink">{title}</h2>
       </div>
-      <div className="mt-6">{children}</div>
+      <div className="mt-4">{children}</div>
     </section>
   );
 }
