@@ -375,7 +375,8 @@ function KnowledgePreview() {
 /* ============ TESTIMONIALS ============ */
 function Testimonials() {
   return (
-    <section className="mt-16 lg:mt-24">
+    <section className="mt-16 lg:mt-24 relative overflow-hidden py-14 lg:py-20 bg-gradient-to-b from-background via-gold/5 to-background">
+      <div className="pointer-events-none absolute inset-0 ag-grain opacity-60" />
       <div className="container-x">
         <p className="eyebrow">شهادات</p>
         <h2 className="display-2 mt-5 max-w-2xl">يثق بنا من يفهم الحقل عن قرب.</h2>
