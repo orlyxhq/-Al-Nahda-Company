@@ -509,10 +509,9 @@ function ProductDetail() {
 
       {/* ============ RELATED ============ */}
       {related.length > 0 && (
-        <section className="container-x py-14">
-          <div className="ribbon-divider mb-12" />
+        <section className="container-x py-8 sm:py-10">
           <h2 className="display-2">منتجات ذات صلة</h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {related.map((p) => {
               const pBrand = p.brandColor ?? "hsl(var(--primary))";
               return (
