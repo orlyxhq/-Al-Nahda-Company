@@ -91,13 +91,14 @@ function ProductDetail() {
           >
             <span>→</span> العودة إلى {cat.title}
           </Link>
-          <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-white/85 [text-shadow:0_1px_2px_rgb(0_0_0_/_0.4)]">
-            <Link to="/products" className="hover:text-white">المنتجات</Link>
+          <nav className={`mt-4 flex flex-wrap items-center gap-2 text-xs ${product.texture ? "text-white/85 [text-shadow:0_1px_2px_rgb(0_0_0_/_0.4)]" : "text-foreground/75"}`}>
+            <Link to="/products" className="hover:opacity-90">المنتجات</Link>
             <span>/</span>
-            <Link to="/products/$category" params={{ category: cat.slug }} className="hover:text-white">{cat.title}</Link>
+            <Link to="/products/$category" params={{ category: cat.slug }} className="hover:opacity-90">{cat.title}</Link>
             <span>/</span>
-            <span className="text-white">{product.name}</span>
+            <span className={product.texture ? "text-white" : "text-foreground"}>{product.name}</span>
           </nav>
+
 
         </div>
 
