@@ -156,7 +156,8 @@ function ImpactBar() {
 function CategoriesSection() {
   const imgs = [cropWheat, soilHands, categorySeeds.url];
   return (
-    <section className="mt-14 lg:mt-20">
+    <section className="mt-14 lg:mt-20 relative py-10 lg:py-14">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-secondary/50 to-transparent" />
       <div className="container-x">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
