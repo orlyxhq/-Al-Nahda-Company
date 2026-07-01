@@ -92,7 +92,7 @@ function DiseaseDetail() {
       </section>
 
       {/* BODY */}
-      <div className="container-x grid gap-12 py-14 lg:grid-cols-[220px_1fr]">
+      <div className="container-x grid gap-8 py-8 lg:grid-cols-[220px_1fr]">
         {/* TOC */}
         <aside className="hidden lg:block">
           <nav className="sticky top-24 space-y-1 border-r border-border pr-5">
@@ -105,7 +105,7 @@ function DiseaseDetail() {
           </nav>
         </aside>
 
-        <article className="prose-base max-w-none space-y-14">
+        <article className="prose-base max-w-none space-y-8">
           <Section id="overview" title="نظرة عامّة">
             <p className="text-base leading-8 text-foreground/85">{disease.overview}</p>
             {disease.role && (
