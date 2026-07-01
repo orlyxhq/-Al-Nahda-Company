@@ -51,9 +51,9 @@ function ProductDetail() {
     <>
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden border-b border-border">
-        {/* Texture background — visible at top, fades out toward info boxes */}
+        {/* Texture background — limited-height band at top with dark overlay for legibility */}
         {product.texture && (
-          <>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[380px] sm:h-[460px] overflow-hidden">
             <img
               src={product.texture}
               alt=""
@@ -61,17 +61,20 @@ function ProductDetail() {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+              className="absolute inset-0 h-full w-full object-cover"
             />
+            {/* Darkening layer to reduce distraction */}
+            <div className="absolute inset-0 bg-black/55" />
+            {/* Brand tint + fade into page background at the bottom */}
             <div
-              className="pointer-events-none absolute inset-0"
+              className="absolute inset-0"
               style={{
-                background: `linear-gradient(180deg, ${brand}26 0%, ${brand}1a 30%, hsl(var(--background)/0.55) 60%, hsl(var(--background)/0.92) 90%, hsl(var(--background)) 100%)`,
-                backdropFilter: "blur(1.5px)",
+                background: `linear-gradient(180deg, ${brandDeep}55 0%, transparent 45%, hsl(var(--background)/0.85) 88%, hsl(var(--background)) 100%)`,
               }}
             />
-          </>
+          </div>
         )}
+
         {!product.texture && isRich && (
           <div
             className="absolute inset-0"
