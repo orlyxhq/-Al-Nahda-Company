@@ -386,11 +386,14 @@ function ProductDetail() {
 
       {/* ============ COMPLEMENTS ============ */}
       {complementProducts.length > 0 && (
-        <section className="border-y border-border bg-secondary/40">
-          <div className="container-x py-12 sm:py-16">
+        <section
+          className="border-y border-border"
+          style={{ background: `linear-gradient(135deg, ${brand}0a, transparent 60%), hsl(var(--secondary) / 0.4)` }}
+        >
+          <div className="container-x py-8 sm:py-10">
             <p className="eyebrow" style={{ color: brand }}>المنتجات المكمّلة</p>
-            <h2 className="display-2 mt-3 text-balance">برنامج تسميد متكامل</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 className="display-2 mt-2 text-balance">برنامج تسميد متكامل</h2>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {complementProducts.map((p) => {
                 const pBrand = p.brandColor ?? "hsl(var(--primary))";
                 return (
@@ -420,11 +423,11 @@ function ProductDetail() {
                           <div className="pointer-events-none absolute inset-0 bg-black/25" />
                         </>
                       )}
-                      <div className="relative p-4">
-                        <div className="rounded-2xl bg-white/80 backdrop-blur-sm p-4 shadow-sm ring-1 ring-black/5">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: pBrand }}>{cat.title}</p>
-                          <h3 className="mt-1.5 text-base font-bold leading-snug text-ink">{p.name}</h3>
-                          <p className="mt-1 text-sm text-ink/75">{p.tagline}</p>
+                      <div className="relative p-3">
+                        <div className="rounded-xl bg-white/80 backdrop-blur-sm px-3.5 py-3 shadow-sm ring-1 ring-black/5">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: pBrand }}>{cat.title}</p>
+                          <h3 className="mt-1 text-sm font-bold leading-snug text-ink">{p.name}</h3>
+                          <p className="mt-0.5 text-xs text-ink/75">{p.tagline}</p>
                         </div>
                       </div>
                     </div>
@@ -432,25 +435,23 @@ function ProductDetail() {
                 );
               })}
             </div>
-
           </div>
         </section>
       )}
 
-
       {/* ============ FAQ ============ */}
       {product.faq && product.faq.length > 0 && (
-        <section className="container-x py-12 sm:py-16">
+        <section className="container-x py-8 sm:py-10">
           <p className="eyebrow" style={{ color: brand }}>الأسئلة الشائعة</p>
-          <h2 className="display-2 mt-3 text-balance">إجابات مباشرة من فريقنا الفنّي</h2>
-          <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card">
+          <h2 className="display-2 mt-2 text-balance">إجابات مباشرة من فريقنا الفنّي</h2>
+          <div className="mt-5 divide-y divide-border rounded-xl border border-border bg-card">
             {product.faq.map((f) => (
-              <details key={f.q} className="group p-5 sm:p-6">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-sm font-bold sm:text-base">
+              <details key={f.q} className="group px-4 py-3.5">
+                <summary className="flex cursor-pointer items-center justify-between gap-3 text-sm font-bold">
                   <span>{f.q}</span>
-                  <span className="shrink-0 text-xl transition group-open:rotate-45" style={{ color: brand }}>+</span>
+                  <span className="shrink-0 text-lg transition group-open:rotate-45" style={{ color: brand }}>+</span>
                 </summary>
-                <p className="mt-3 text-sm leading-7 text-foreground/80">{f.a}</p>
+                <p className="mt-2 text-[13px] leading-6 text-foreground/80">{f.a}</p>
               </details>
             ))}
           </div>
@@ -459,49 +460,52 @@ function ProductDetail() {
 
       {/* ============ Active ingredients (auto-mapped) ============ */}
       {(ingredients.length > 0 || solvedDiseases.length > 0 || solvedSymptoms.length > 0) && (
-        <section className="container-x py-12 sm:py-14">
-          <div className="ribbon-divider mb-10" />
-          <h2 className="display-2">مرجعيّة المواد الفعّالة والمشاكل المرتبطة</h2>
+        <section className="border-y border-border bg-ink text-primary-foreground">
+          <div className="container-x py-8 sm:py-10">
+            <p className="eyebrow text-gold">مرجعية علمية</p>
+            <h2 className="display-2 mt-2 text-primary-foreground">المواد الفعّالة والمشاكل المرتبطة</h2>
 
-          {ingredients.length > 0 && (
-            <div className="mt-8">
-              <p className="text-xs font-bold tracking-[0.18em] uppercase text-muted-foreground">المواد الفعّالة</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {ingredients.map((ing) => (
-                  <span key={ing} className="rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-semibold text-primary">{ing}</span>
-                ))}
+            {ingredients.length > 0 && (
+              <div className="mt-5">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-primary-foreground/60">المواد الفعّالة</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {ingredients.map((ing) => (
+                    <span key={ing} className="rounded-md border border-gold/40 bg-gold/10 px-2.5 py-1.5 text-xs font-semibold text-gold">{ing}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {solvedDiseases.length > 0 && (
-            <div className="mt-10">
-              <h3 className="text-lg font-bold">أمراض وآفات ونواقص يستهدفها</h3>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {solvedDiseases.map((d) => (
-                  <Link key={d.id} to="/diseases/$id" params={{ id: d.id }} className="group rounded-xl border border-border bg-card p-4 transition hover:border-primary">
-                    <p className="font-mono text-[11px] text-muted-foreground" style={{ direction: "ltr", textAlign: "right" }}>{d.scientific}</p>
-                    <h4 className="mt-1 text-sm font-bold transition group-hover:text-primary">{d.name}</h4>
-                  </Link>
-                ))}
+            {solvedDiseases.length > 0 && (
+              <div className="mt-6">
+                <h3 className="text-sm font-bold text-primary-foreground">أمراض وآفات ونواقص يستهدفها</h3>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {solvedDiseases.map((d) => (
+                    <Link key={d.id} to="/diseases/$id" params={{ id: d.id }} className="group rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 transition hover:border-gold">
+                      <p className="font-mono text-[10px] text-primary-foreground/60" style={{ direction: "ltr", textAlign: "right" }}>{d.scientific}</p>
+                      <h4 className="mt-0.5 text-[13px] font-bold transition group-hover:text-gold">{d.name}</h4>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {solvedSymptoms.length > 0 && (
-            <div className="mt-10">
-              <h3 className="text-lg font-bold">أعراض زراعية يعالجها</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {solvedSymptoms.map((s) => (
-                  <Link key={s.id} to="/diseases/symptom/$id" params={{ id: s.id }} className="rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground/85 transition hover:border-primary hover:text-primary">
-                    {s.name}
-                  </Link>
-                ))}
+            {solvedSymptoms.length > 0 && (
+              <div className="mt-6">
+                <h3 className="text-sm font-bold text-primary-foreground">أعراض زراعية يعالجها</h3>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {solvedSymptoms.map((s) => (
+                    <Link key={s.id} to="/diseases/symptom/$id" params={{ id: s.id }} className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-primary-foreground/85 transition hover:border-gold hover:text-gold">
+                      {s.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </section>
       )}
+
 
       {/* ============ RELATED ============ */}
       {related.length > 0 && (
