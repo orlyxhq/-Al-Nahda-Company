@@ -58,6 +58,8 @@ export type Product = {
   benefits?: string[];
   cropList?: { name: string; emoji: string }[];
   whyChoose?: { title: string; value: string }[];
+  whenToChoose?: string[];      // "متى أختار هذا المنتج؟"
+  topBadge?: string;            // ribbon at top of hero, e.g. "أفضل استخدام: ..."
   problemLinks?: { id: string; label: string }[]; // links to /diseases/$id
   technical?: { label: string; value: string }[];
   usage?: { title: string; detail: string }[];
@@ -68,6 +70,8 @@ export type Product = {
 
 import alraheebImg from "@/assets/alraheeb.webp.asset.json";
 import generalPharmaImg from "@/assets/general-pharma.webp.asset.json";
+import dynamicImg from "@/assets/dynamic.webp.asset.json";
+import ultraFeroImg from "@/assets/ultra-fero.webp.asset.json";
 import textureRed from "@/assets/texture-red-crystals.webp.asset.json";
 import textureBlue from "@/assets/texture-blue-granules.webp.asset.json";
 
