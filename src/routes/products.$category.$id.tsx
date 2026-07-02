@@ -99,6 +99,14 @@ function ProductDetail() {
             <span className={product.texture ? "text-white" : "text-foreground"}>{product.name}</span>
           </nav>
 
+          {product.topBadge && (
+            <div
+              className="mt-4 inline-flex max-w-full items-center gap-2 rounded-full border border-white/30 bg-white/90 px-4 py-2 text-[12px] font-bold leading-snug text-ink shadow-sm backdrop-blur"
+              style={{ borderInlineStart: `4px solid ${brand}` }}
+            >
+              <span className="line-clamp-2">{product.topBadge}</span>
+            </div>
+          )}
 
         </div>
 
@@ -241,6 +249,32 @@ function ProductDetail() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============ WHEN TO CHOOSE ============ */}
+      {product.whenToChoose && product.whenToChoose.length > 0 && (
+        <section className="border-b border-border bg-gradient-to-br from-gold/10 via-background to-background">
+          <div className="container-x py-8 sm:py-10">
+            <p className="eyebrow text-gold">🎯 دليل الاختيار</p>
+            <h2 className="display-2 mt-2 text-balance">متى أختار هذا المنتج؟</h2>
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">إجابة سريعة تساعدك على اتخاذ القرار قبل الدخول في التفاصيل الفنّية.</p>
+            <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+              {product.whenToChoose.map((w, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 rounded-xl border border-gold/25 bg-card px-4 py-3 shadow-sm"
+                  style={{ borderInlineStart: `3px solid ${brand}` }}
+                >
+                  <span
+                    className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-[11px] font-bold tnum text-white"
+                    style={{ background: brand }}
+                  >{i + 1}</span>
+                  <p className="text-[13px] leading-6 text-foreground/85">{w}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
