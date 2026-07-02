@@ -99,6 +99,14 @@ function ProductDetail() {
             <span className={product.texture ? "text-white" : "text-foreground"}>{product.name}</span>
           </nav>
 
+          {product.topBadge && (
+            <div
+              className="mt-4 inline-flex max-w-full items-center gap-2 rounded-full border border-white/30 bg-white/90 px-4 py-2 text-[12px] font-bold leading-snug text-ink shadow-sm backdrop-blur"
+              style={{ borderInlineStart: `4px solid ${brand}` }}
+            >
+              <span className="line-clamp-2">{product.topBadge}</span>
+            </div>
+          )}
 
         </div>
 
