@@ -74,6 +74,8 @@ import dynamicImg from "@/assets/dynamic.webp.asset.json";
 import ultraFeroImg from "@/assets/ultra-fero.webp.asset.json";
 import textureRed from "@/assets/texture-red-crystals.webp.asset.json";
 import textureBlue from "@/assets/texture-blue-granules.webp.asset.json";
+import textureBlack from "@/assets/texture-black-powder.jpg.asset.json";
+import textureBrown from "@/assets/texture-brown-granules.jpg.asset.json";
 
 
 export const PRODUCTS: Product[] = [
