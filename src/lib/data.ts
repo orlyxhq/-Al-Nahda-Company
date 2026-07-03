@@ -263,7 +263,7 @@ export const PRODUCTS: Product[] = [
     cropTags: ["قات", "طماطم", "خيار", "بطاطس", "عنب", "حمضيات", "نخيل"],
     badge: "منشّط جذور",
     image: dynamicImg.url,
-    texture: textureBlue.url,
+    texture: textureBlack.url,
     brandColor: "#15803D",
     brandColorDeep: "#052E16",
     topBadge: "🟡 أفضل استخدام: لعلاج ملوحة التربة، تنشيط الجذور، تحسين الخصوبة، وتأسيس الشتلات",
@@ -363,7 +363,7 @@ export const PRODUCTS: Product[] = [
     cropTags: ["قات", "حمضيات", "عنب", "مانجو", "نخيل", "طماطم", "فلفل"],
     badge: "علاج الاصفرار",
     image: ultraFeroImg.url,
-    texture: textureRed.url,
+    texture: textureBrown.url,
     brandColor: "#B45309",
     brandColorDeep: "#78350F",
     topBadge: "🟡 أفضل استخدام: علاج نقص الحديد واصفرار الأوراق الحديثة",
@@ -1249,7 +1249,7 @@ export const TESTIMONIALS = [
 ];
 
 export const TIMELINE = [
-  { year: "١٩٩٨", title: "التأسيس", text: "انطلقنا كموزّع محلي للأسمدة المتخصّصة في المنطقة الوسطى." },
+  { year: "١٩٧٠", title: "التأسيس", text: "انطلقنا كموزّع محلي للأسمدة المتخصّصة في المنطقة الوسطى." },
   { year: "٢٠٠٧", title: "التوسّع الإقليمي", text: "افتتاح أوّل مستودع إقليمي وتوسيع شبكة الموزّعين." },
   { year: "٢٠١٤", title: "وحدة وقاية النبات", text: "إطلاق قسم متخصّص في المبيدات والاستشارات الفنية." },
   { year: "٢٠٢٠", title: "منصة المعرفة الرقمية", text: "إطلاق أوّل قاعدة بيانات عربية للأمراض الزراعية وحلولها." },

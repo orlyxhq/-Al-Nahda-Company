@@ -51,7 +51,7 @@ function Hero() {
       <div className="container-x pt-10 lg:pt-16">
         <div className="grid items-end gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <div className="relative">
-            <p className="eyebrow">منصّة الحلول الزراعية · منذ ١٩٩٨</p>
+            <p className="eyebrow">منصّة الحلول الزراعية · منذ ١٩٧٠</p>
             <h1 className="display-1 mt-6 text-balance">
               نُنمّي الأرضَ بالعلم،
               <br />
