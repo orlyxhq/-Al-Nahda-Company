@@ -108,6 +108,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          <ThemeToggle />
           {showBack && (
             <button
               type="button"
