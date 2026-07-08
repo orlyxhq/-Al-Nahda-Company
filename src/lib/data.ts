@@ -48,6 +48,8 @@ export type Product = {
   pack: string;
   cropTags: string[];
   badge?: string;
+  /** Compact badge shown ONLY on product listings (falls back to `badge` if absent) */
+  listBadge?: string;
   /** Optional rich content — when present, product detail renders the full magazine layout */
   image?: string;
   texture?: string;             // decorative background image (granules/crystals) for cards
@@ -90,6 +92,7 @@ export const PRODUCTS: Product[] = [
     pack: "كيس 25 / 50 كجم",
     cropTags: ["قمح", "ذرة", "بطاطس", "طماطم", "خيار", "عنب", "نخيل", "قات"],
     badge: "إطلاق جديد",
+    listBadge: "مركب NPK",
     image: alraheebImg.url,
     texture: textureRed.url,
     brandColor: "#DC2626",
@@ -174,6 +177,7 @@ export const PRODUCTS: Product[] = [
     pack: "كيس 10 كجم",
     cropTags: ["طماطم", "خيار", "فلفل", "باذنجان", "بطّيخ", "عنب", "موالح", "مانجو", "نخيل"],
     badge: "الأكثر طلباً",
+    listBadge: "مركب NPK",
     image: generalPharmaImg.url,
     texture: textureBlue.url,
     brandColor: "#0EA5E9",
@@ -362,6 +366,7 @@ export const PRODUCTS: Product[] = [
     pack: "عبوة 1 كجم",
     cropTags: ["قات", "حمضيات", "عنب", "مانجو", "نخيل", "طماطم", "فلفل"],
     badge: "علاج الاصفرار",
+    listBadge: "حديد EDDHA",
     image: ultraFeroImg.url,
     texture: textureBrown.url,
     brandColor: "#B45309",

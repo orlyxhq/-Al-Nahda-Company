@@ -74,17 +74,17 @@ function CategoryPage() {
                       wrapperClassName="absolute inset-0 bg-transparent"
                       className="!object-contain p-2 transition duration-500 group-hover:scale-105"
                     />
-                    {p.badge && (
+                    {(p.listBadge ?? p.badge) && (
                       <span
                         className="absolute top-3 start-3 rounded-full px-2.5 py-1 text-[10px] font-bold text-white shadow-sm"
                         style={{ background: brand }}
-                      >{p.badge}</span>
+                      >{p.listBadge ?? p.badge}</span>
                     )}
                   </div>
                 ) : (
                   <div className="flex items-center justify-between p-6 pb-0">
                     <span className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">{cat.title}</span>
-                    {p.badge && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.badge}</span>}
+                    {(p.listBadge ?? p.badge) && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.listBadge ?? p.badge}</span>}
                   </div>
                 )}
                 {/* INFO BOX — textured blurred background per product */}
