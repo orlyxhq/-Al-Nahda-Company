@@ -84,7 +84,7 @@ function CategoryPage() {
                 ) : (
                   <div className="flex items-center justify-between p-6 pb-0">
                     <span className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">{cat.title}</span>
-                    {p.badge && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.badge}</span>}
+                    {(p.listBadge ?? p.badge) && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.listBadge ?? p.badge}</span>}
                   </div>
                 )}
                 {/* INFO BOX — textured blurred background per product */}
