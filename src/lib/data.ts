@@ -92,6 +92,7 @@ export const PRODUCTS: Product[] = [
     pack: "كيس 25 / 50 كجم",
     cropTags: ["قمح", "ذرة", "بطاطس", "طماطم", "خيار", "عنب", "نخيل", "قات"],
     badge: "إطلاق جديد",
+    listBadge: "مركب NPK",
     image: alraheebImg.url,
     texture: textureRed.url,
     brandColor: "#DC2626",
