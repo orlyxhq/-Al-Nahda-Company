@@ -58,7 +58,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between gap-6 lg:h-20">
-        <Link to="/" className="shrink-0">
+        <Link to="/" className="min-w-0 flex-1 lg:flex-none lg:shrink-0">
           <Logo />
         </Link>
 
