@@ -177,6 +177,7 @@ export const PRODUCTS: Product[] = [
     pack: "كيس 10 كجم",
     cropTags: ["طماطم", "خيار", "فلفل", "باذنجان", "بطّيخ", "عنب", "موالح", "مانجو", "نخيل"],
     badge: "الأكثر طلباً",
+    listBadge: "مركب NPK",
     image: generalPharmaImg.url,
     texture: textureBlue.url,
     brandColor: "#0EA5E9",
