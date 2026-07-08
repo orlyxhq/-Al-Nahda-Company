@@ -366,6 +366,7 @@ export const PRODUCTS: Product[] = [
     pack: "عبوة 1 كجم",
     cropTags: ["قات", "حمضيات", "عنب", "مانجو", "نخيل", "طماطم", "فلفل"],
     badge: "علاج الاصفرار",
+    listBadge: "حديد EDDHA",
     image: ultraFeroImg.url,
     texture: textureBrown.url,
     brandColor: "#B45309",
