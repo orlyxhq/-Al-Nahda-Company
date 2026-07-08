@@ -48,6 +48,8 @@ export type Product = {
   pack: string;
   cropTags: string[];
   badge?: string;
+  /** Compact badge shown ONLY on product listings (falls back to `badge` if absent) */
+  listBadge?: string;
   /** Optional rich content — when present, product detail renders the full magazine layout */
   image?: string;
   texture?: string;             // decorative background image (granules/crystals) for cards
