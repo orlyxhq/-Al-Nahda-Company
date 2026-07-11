@@ -383,8 +383,8 @@ function Testimonials() {
         <p className="eyebrow">شهادات</p>
         <h2 className="display-2 mt-5 max-w-2xl">يثق بنا من يفهم الحقل عن قرب.</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-soft">
+          {TESTIMONIALS.map((t, i) => (
+            <figure key={t.name} className="reveal-on-scroll hover-lift flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-soft" style={{ transitionDelay: `${i * 90}ms` }}>
               <span className="font-display text-5xl leading-none text-gold">”</span>
               <blockquote className="mt-2 flex-1 text-base leading-8 text-foreground">
                 {t.quote}
