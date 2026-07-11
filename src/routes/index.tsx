@@ -177,7 +177,8 @@ function CategoriesSection() {
               key={cat.slug}
               to="/products/$category"
               params={{ category: cat.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary"
+              className="group reveal-on-scroll hover-lift relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary"
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
               <div className="relative overflow-hidden bg-secondary">
                 <LazyImage
