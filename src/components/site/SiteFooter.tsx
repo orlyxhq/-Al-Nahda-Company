@@ -34,7 +34,7 @@ const COLS = [
 
 type IconProps = { className?: string };
 
-const SOCIALS: { label: string; href: string; Icon: (p: IconProps) => JSX.Element }[] = [
+const SOCIALS: { label: string; href: string; Icon: (p: IconProps) => ReactElement }[] = [
   {
     label: "X (تويتر)",
     href: "#",
