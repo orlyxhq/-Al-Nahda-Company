@@ -177,7 +177,8 @@ function CategoriesSection() {
               key={cat.slug}
               to="/products/$category"
               params={{ category: cat.slug }}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary"
+              className="group reveal-on-scroll hover-lift relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary"
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
               <div className="relative overflow-hidden bg-secondary">
                 <LazyImage
@@ -313,8 +314,8 @@ function WhyUs() {
           </Link>
         </div>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
-          {items.map((it) => (
-            <div key={it.num} className="bg-card p-7">
+          {items.map((it, i) => (
+            <div key={it.num} className="reveal-on-scroll bg-card p-7 transition hover:bg-secondary/30" style={{ transitionDelay: `${i * 70}ms` }}>
               <p className="text-sm font-bold tracking-[0.18em] text-gold tnum">{it.num}</p>
               <h3 className="mt-4 text-lg font-bold">{it.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{it.text}</p>
@@ -340,17 +341,18 @@ function KnowledgePreview() {
           <Link to="/knowledge" className="text-sm font-semibold text-primary">جميع المقالات ←</Link>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {featured.map((a) => (
+          {featured.map((a, i) => (
             <Link
               key={a.id}
               to="/knowledge/$id"
               params={{ id: a.id }}
-              className="group flex flex-col"
+              className="group reveal-on-scroll flex flex-col"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               <LazyImage
                 src={a.image}
                 alt={a.title}
-                wrapperClassName="aspect-[5/4] rounded-xl border border-border"
+                wrapperClassName="aspect-[5/4] rounded-xl border border-border overflow-hidden"
                 className="transition-transform duration-700 group-hover:scale-105"
               />
               <div className="mt-3">
@@ -382,8 +384,8 @@ function Testimonials() {
         <p className="eyebrow">شهادات</p>
         <h2 className="display-2 mt-5 max-w-2xl">يثق بنا من يفهم الحقل عن قرب.</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-soft">
+          {TESTIMONIALS.map((t, i) => (
+            <figure key={t.name} className="reveal-on-scroll hover-lift flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-soft" style={{ transitionDelay: `${i * 90}ms` }}>
               <span className="font-display text-5xl leading-none text-gold">”</span>
               <blockquote className="mt-2 flex-1 text-base leading-8 text-foreground">
                 {t.quote}

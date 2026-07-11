@@ -68,9 +68,9 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-primary" }}
-              inactiveProps={{ className: "text-foreground/75 hover:text-foreground" }}
-              className="rounded-md px-3 py-2 text-sm font-medium transition-colors"
+              activeProps={{ className: "text-primary after:opacity-100 after:scale-x-100" }}
+              inactiveProps={{ className: "text-foreground/75 hover:text-foreground after:opacity-0 after:scale-x-0" }}
+              className="relative rounded-md px-3 py-2 text-sm font-medium transition-colors after:pointer-events-none after:absolute after:inset-x-3 after:-bottom-0.5 after:h-[2px] after:origin-center after:rounded-full after:bg-gold after:transition-all after:duration-300"
             >
               {item.label}
             </Link>
