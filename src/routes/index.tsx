@@ -341,17 +341,18 @@ function KnowledgePreview() {
           <Link to="/knowledge" className="text-sm font-semibold text-primary">جميع المقالات ←</Link>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {featured.map((a) => (
+          {featured.map((a, i) => (
             <Link
               key={a.id}
               to="/knowledge/$id"
               params={{ id: a.id }}
-              className="group flex flex-col"
+              className="group reveal-on-scroll flex flex-col"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               <LazyImage
                 src={a.image}
                 alt={a.title}
-                wrapperClassName="aspect-[5/4] rounded-xl border border-border"
+                wrapperClassName="aspect-[5/4] rounded-xl border border-border overflow-hidden"
                 className="transition-transform duration-700 group-hover:scale-105"
               />
               <div className="mt-3">
