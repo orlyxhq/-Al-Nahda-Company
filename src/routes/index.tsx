@@ -314,8 +314,8 @@ function WhyUs() {
           </Link>
         </div>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
-          {items.map((it) => (
-            <div key={it.num} className="bg-card p-7">
+          {items.map((it, i) => (
+            <div key={it.num} className="reveal-on-scroll bg-card p-7 transition hover:bg-secondary/30" style={{ transitionDelay: `${i * 70}ms` }}>
               <p className="text-sm font-bold tracking-[0.18em] text-gold tnum">{it.num}</p>
               <h3 className="mt-4 text-lg font-bold">{it.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{it.text}</p>
