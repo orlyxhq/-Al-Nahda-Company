@@ -6,9 +6,10 @@ const COLS = [
   {
     title: "المنتجات",
     links: [
-      { to: "/products/fertilizers", label: "الأسمدة" },
-      { to: "/products/pesticides", label: "المبيدات" },
-      { to: "/products/seeds", label: "البذور والشتلات" },
+      { to: "/products/$category", params: { category: "fertilizers" }, label: "الأسمدة" },
+      { to: "/products/$category", params: { category: "pesticides" }, label: "المبيدات" },
+      { to: "/products/$category", params: { category: "seeds" }, label: "البذور والشتلات" },
+
       { to: "/products", label: "جميع الفئات" },
     ],
   },
