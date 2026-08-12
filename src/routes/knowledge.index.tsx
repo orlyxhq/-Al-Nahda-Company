@@ -37,13 +37,14 @@ function KnowledgeIndex() {
       </section>
 
 
-      <section className="container-x py-14">
+      <section className="container-x section-pad-sm">
         {/* featured */}
         <Link
           to="/knowledge/$id"
           params={{ id: featured.id }}
-          className="group grid gap-0 overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-[1.2fr_1fr]"
+          className="group reveal-on-scroll surface-elevated grid gap-0 overflow-hidden md:grid-cols-[1.2fr_1fr]"
         >
+
           <LazyImage
             src={featured.cover}
             alt={featured.title}
