@@ -56,17 +56,19 @@ function CategoryPage() {
       </section>
 
 
-      <section className="container-x py-14">
+      <section className="container-x section-pad-sm">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p) => {
+          {items.map((p, i) => {
             const brand = p.brandColor ?? "hsl(var(--primary))";
             return (
               <Link
                 key={p.id}
                 to="/products/$category/$id"
                 params={{ category: p.category, id: p.id }}
-                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                className="group reveal-on-scroll hover-lift flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary/60"
+                style={{ transitionDelay: `${(i % 6) * 60}ms` }}
               >
+
                 {p.image ? (
                   <div
                     className="relative aspect-square overflow-hidden"
