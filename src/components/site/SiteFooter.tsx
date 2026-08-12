@@ -119,6 +119,8 @@ export function SiteFooter() {
                   <li key={i}>
                     <Link
                       to={l.to}
+                      params={("params" in l ? l.params : undefined) as never}
+
                       className="group inline-flex items-center gap-2 text-sm text-foreground/85 transition-colors hover:text-primary"
                     >
                       <span className="h-px w-3 bg-border-strong transition-all group-hover:w-5 group-hover:bg-primary" />
