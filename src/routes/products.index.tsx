@@ -81,26 +81,32 @@ function ProductsIndex() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
-          {PRODUCT_CATEGORIES.map((c) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {PRODUCT_CATEGORIES.map((c, i) => (
             <Link
               key={c.slug}
               to="/products/$category"
               params={{ category: c.slug }}
-              className="group bg-background p-7 transition hover:bg-secondary/60"
+              className="group reveal-on-scroll hover-lift surface-elevated relative overflow-hidden p-7"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
+              <span className="absolute inset-x-0 top-0 h-1 bg-primary/70 opacity-0 transition group-hover:opacity-100" />
               <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">{c.short}</p>
-              <h3 className="mt-3 text-2xl font-bold">{c.title}</h3>
+              <h3 className="mt-3 text-2xl font-bold transition group-hover:text-primary">{c.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{c.description}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground">{c.count} منتج <span className="rotate-180">←</span></span>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground">
+                <span className="tnum">{c.count}</span> منتج
+                <span className="rotate-180 transition-transform group-hover:-translate-x-1">←</span>
+              </span>
             </Link>
           ))}
         </div>
 
-        <div className="mt-14 flex items-end justify-between">
-          <h2 className="text-xl font-bold">نتائج البحث</h2>
+        <div className="mt-14 flex items-end justify-between border-b border-border pb-4">
+          <h2 className="display-3">نتائج البحث</h2>
           <span className="text-sm text-muted-foreground tnum">{filtered.length} منتج</span>
         </div>
+
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
