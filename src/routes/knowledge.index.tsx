@@ -73,36 +73,50 @@ function KnowledgeIndex() {
           </div>
         </Link>
 
-        <div className="mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {rest.map((a) => (
+        <div className="mt-10 flex items-end justify-between border-b border-border pb-4">
+          <h2 className="display-3">أحدث المقالات</h2>
+          <span className="text-sm text-muted-foreground tnum">{rest.length} مقال</span>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {rest.map((a, i) => (
             <Link
               key={a.id}
               to="/knowledge/$id"
               params={{ id: a.id }}
-              className="group flex flex-col"
+              className="group reveal-on-scroll hover-lift flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary/60"
+              style={{ transitionDelay: `${(i % 6) * 70}ms` }}
             >
-              <LazyImage
-                src={a.image}
-                alt={a.title}
-                wrapperClassName="aspect-[5/4] rounded-xl border border-border"
-                className="transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="rounded-md bg-secondary px-2 py-1 font-semibold text-foreground">
+              <div className="relative">
+                <LazyImage
+                  src={a.image}
+                  alt={a.title}
+                  wrapperClassName="aspect-[5/4]"
+                  className="transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute top-3 start-3 rounded-full bg-background/85 px-2.5 py-1 text-[11px] font-bold text-primary backdrop-blur">
                   {a.category}
                 </span>
-                <span>{a.date}</span>
-                <span className="h-1 w-1 rounded-full bg-border-strong" />
-                <span>{a.readingTime}</span>
               </div>
-              <h3 className="mt-3 text-xl font-bold leading-snug transition group-hover:text-primary">
-                {a.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">{a.excerpt}</p>
-              <p className="mt-4 text-xs font-semibold text-foreground/80">{a.author}</p>
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{a.date}</span>
+                  <span className="h-1 w-1 rounded-full bg-border-strong" />
+                  <span>{a.readingTime}</span>
+                </div>
+                <h3 className="mt-3 text-lg font-bold leading-snug transition group-hover:text-primary">
+                  {a.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-7 text-muted-foreground">{a.excerpt}</p>
+                <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
+                  <p className="text-xs font-semibold text-foreground/80">{a.author}</p>
+                  <span className="text-sm text-primary opacity-0 transition group-hover:opacity-100">←</span>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
+
       </section>
     </>
   );
