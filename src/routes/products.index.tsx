@@ -109,30 +109,39 @@ function ProductsIndex() {
 
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
+          {filtered.map((p, i) => (
             <Link
               key={p.id}
               to="/products/$category/$id"
               params={{ category: p.category, id: p.id }}
-              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition hover:border-primary hover:shadow-card"
+              className="group reveal-on-scroll hover-lift relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:border-primary/60"
+              style={{ transitionDelay: `${(i % 6) * 60}ms` }}
             >
-              <div className="flex items-center justify-between">
+              <span
+                className="absolute inset-y-0 start-0 w-1 opacity-70"
+                style={{ background: p.brandColor ?? "var(--color-primary)" }}
+              />
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">
                   {PRODUCT_CATEGORIES.find((c) => c.slug === p.category)?.title}
                 </span>
-                {p.badge && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.badge}</span>}
+                {(p.listBadge ?? p.badge) && (
+                  <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.listBadge ?? p.badge}</span>
+                )}
               </div>
-              <h3 className="mt-4 text-lg font-bold leading-snug">{p.name}</h3>
+              <h3 className="mt-4 text-lg font-bold leading-snug transition group-hover:text-primary">{p.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-              <p className="mt-4 flex-1 text-sm leading-7 text-foreground/80">{p.description}</p>
-              <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border pt-4">
+              <p className="mt-3 flex-1 text-sm leading-7 text-foreground/80">{p.description}</p>
+              <div className="mt-4 flex flex-wrap items-center gap-1.5 border-t border-border pt-4">
                 {p.cropTags.map((t) => (
-                  <span key={t} className="rounded-full bg-secondary px-2.5 py-1 text-[11px] text-foreground/70">{t}</span>
+                  <span key={t} className="chip">{t}</span>
                 ))}
+                <span className="ms-auto text-sm text-primary opacity-0 transition group-hover:opacity-100">←</span>
               </div>
             </Link>
           ))}
         </div>
+
       </section>
     </>
   );
