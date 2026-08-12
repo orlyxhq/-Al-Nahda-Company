@@ -20,8 +20,10 @@ function KnowledgeIndex() {
   const [featured, ...rest] = ARTICLES;
   return (
     <>
-      <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-14 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-secondary/30">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <div className="pointer-events-none absolute inset-0 bg-dots opacity-60" />
+        <div className="container-x relative py-12 lg:py-20">
           <p className="eyebrow">مركز المعرفة</p>
           <h1 className="display-1 mt-5 max-w-3xl text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">
             علم زراعي قابل للتطبيق، مكتوب بلغة المزارع.
@@ -30,8 +32,10 @@ function KnowledgeIndex() {
             مقالات وأدلّة من خبراء النهضة الزراعية والتجارية في إدارة التربة، الري، التغذية،
             وقاية النبات، وأفضل الممارسات الموسمية.
           </p>
+          <div className="divider-leaf mt-8 max-w-md" />
         </div>
       </section>
+
 
       <section className="container-x py-14">
         {/* featured */}
