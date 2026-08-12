@@ -175,13 +175,21 @@ function DiseasesIndex() {
           </div>
 
           <div className="mt-8 space-y-4">
-            {filtered.map((d) => (
+            {filtered.map((d, i) => (
               <Link
                 key={d.id}
                 to="/diseases/$id"
                 params={{ id: d.id }}
-                className="group grid gap-4 rounded-xl border border-border bg-card p-5 transition hover:border-primary hover:shadow-card sm:p-6 sm:grid-cols-[1fr_auto]"
+                className="group reveal-on-scroll hover-lift relative grid gap-4 overflow-hidden rounded-2xl border border-border bg-card p-5 ps-6 transition hover:border-primary/60 sm:p-6 sm:ps-7 sm:grid-cols-[1fr_auto]"
+                style={{ transitionDelay: `${(i % 8) * 50}ms` }}
               >
+                <span
+                  className={`absolute inset-y-0 start-0 w-1.5 ${
+                    d.severity === "شديد" ? "bg-destructive/70" :
+                    d.severity === "متوسّط" ? "bg-gold/70" :
+                    "bg-primary/50"
+                  }`}
+                />
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold ${
@@ -191,7 +199,7 @@ function DiseasesIndex() {
                     }`}>
                       ● {d.severity}
                     </span>
-                    <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] text-foreground/70">
+                    <span className="chip">
                       {DISEASE_CATEGORIES.find((c) => c.slug === d.category)?.title}
                     </span>
                     <span className="text-[11px] font-mono text-muted-foreground" style={{direction:"ltr"}}>{d.scientific}</span>
@@ -209,6 +217,7 @@ function DiseasesIndex() {
                 </div>
               </Link>
             ))}
+
             {filtered.length === 0 && (
               <div className="rounded-xl border border-dashed border-border p-12 text-center text-muted-foreground">
                 لا توجد نتائج مطابقة لمعايير البحث.
