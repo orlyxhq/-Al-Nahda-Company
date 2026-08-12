@@ -32,8 +32,10 @@ function ProductsIndex() {
 
   return (
     <>
-      <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-14 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-secondary/30">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <div className="pointer-events-none absolute inset-0 bg-dots opacity-60" />
+        <div className="container-x relative py-12 lg:py-20">
           <p className="eyebrow">كتالوج المنتجات</p>
           <h1 className="display-1 mt-5 max-w-3xl text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">
             منتجات معتمدة. تركيبات حقيقية. نتائج قابلة للقياس.
@@ -42,8 +44,10 @@ function ProductsIndex() {
             ابحث في تشكيلة النهضة الزراعية والتجارية الكاملة من الأسمدة والمبيدات والبذور، مع
             تركيبات شفافة ومراجع علمية لكل منتج.
           </p>
+          <div className="divider-leaf mt-8 max-w-md" />
         </div>
       </section>
+
 
       <section className="container-x py-12">
         <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:items-center">
