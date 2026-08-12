@@ -6,9 +6,10 @@ const COLS = [
   {
     title: "المنتجات",
     links: [
-      { to: "/products/fertilizers", label: "الأسمدة" },
-      { to: "/products/pesticides", label: "المبيدات" },
-      { to: "/products/seeds", label: "البذور والشتلات" },
+      { to: "/products/$category", params: { category: "fertilizers" }, label: "الأسمدة" },
+      { to: "/products/$category", params: { category: "pesticides" }, label: "المبيدات" },
+      { to: "/products/$category", params: { category: "seeds" }, label: "البذور والشتلات" },
+
       { to: "/products", label: "جميع الفئات" },
     ],
   },
@@ -118,6 +119,8 @@ export function SiteFooter() {
                   <li key={i}>
                     <Link
                       to={l.to}
+                      params={("params" in l ? l.params : undefined) as never}
+
                       className="group inline-flex items-center gap-2 text-sm text-foreground/85 transition-colors hover:text-primary"
                     >
                       <span className="h-px w-3 bg-border-strong transition-all group-hover:w-5 group-hover:bg-primary" />

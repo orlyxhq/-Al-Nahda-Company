@@ -36,9 +36,11 @@ function CategoryPage() {
 
   return (
     <>
-      <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-14 lg:py-20">
-          <Link to="/products" className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary">
+      <section className="relative overflow-hidden border-b border-border bg-secondary/30">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
+        <div className="container-x relative py-10 lg:py-16">
+          <Link to="/products" className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold text-foreground transition hover:border-primary hover:text-primary">
             <span>→</span> العودة إلى المنتجات
           </Link>
           <nav className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
@@ -48,21 +50,25 @@ function CategoryPage() {
           </nav>
           <p className="eyebrow mt-6">{cat.short}</p>
           <h1 className="display-1 mt-4 text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">{cat.title}</h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">{cat.description}</p>
+          <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">{cat.description}</p>
+          <div className="divider-leaf mt-8 max-w-md" />
         </div>
       </section>
 
-      <section className="container-x py-14">
+
+      <section className="container-x section-pad-sm">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p) => {
+          {items.map((p, i) => {
             const brand = p.brandColor ?? "hsl(var(--primary))";
             return (
               <Link
                 key={p.id}
                 to="/products/$category/$id"
                 params={{ category: p.category, id: p.id }}
-                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                className="group reveal-on-scroll hover-lift flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary/60"
+                style={{ transitionDelay: `${(i % 6) * 60}ms` }}
               >
+
                 {p.image ? (
                   <div
                     className="relative aspect-square overflow-hidden"

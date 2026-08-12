@@ -32,8 +32,10 @@ function ProductsIndex() {
 
   return (
     <>
-      <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-14 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-secondary/30">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <div className="pointer-events-none absolute inset-0 bg-dots opacity-60" />
+        <div className="container-x relative py-12 lg:py-20">
           <p className="eyebrow">كتالوج المنتجات</p>
           <h1 className="display-1 mt-5 max-w-3xl text-[1.9rem] sm:text-[2.6rem] lg:text-[4.75rem]">
             منتجات معتمدة. تركيبات حقيقية. نتائج قابلة للقياس.
@@ -42,8 +44,10 @@ function ProductsIndex() {
             ابحث في تشكيلة النهضة الزراعية والتجارية الكاملة من الأسمدة والمبيدات والبذور، مع
             تركيبات شفافة ومراجع علمية لكل منتج.
           </p>
+          <div className="divider-leaf mt-8 max-w-md" />
         </div>
       </section>
+
 
       <section className="container-x py-12">
         <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:items-center">
@@ -77,52 +81,67 @@ function ProductsIndex() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
-          {PRODUCT_CATEGORIES.map((c) => (
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {PRODUCT_CATEGORIES.map((c, i) => (
             <Link
               key={c.slug}
               to="/products/$category"
               params={{ category: c.slug }}
-              className="group bg-background p-7 transition hover:bg-secondary/60"
+              className="group reveal-on-scroll hover-lift surface-elevated relative overflow-hidden p-7"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
+              <span className="absolute inset-x-0 top-0 h-1 bg-primary/70 opacity-0 transition group-hover:opacity-100" />
               <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">{c.short}</p>
-              <h3 className="mt-3 text-2xl font-bold">{c.title}</h3>
+              <h3 className="mt-3 text-2xl font-bold transition group-hover:text-primary">{c.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">{c.description}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground">{c.count} منتج <span className="rotate-180">←</span></span>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground">
+                <span className="tnum">{c.count}</span> منتج
+                <span className="rotate-180 transition-transform group-hover:-translate-x-1">←</span>
+              </span>
             </Link>
           ))}
         </div>
 
-        <div className="mt-14 flex items-end justify-between">
-          <h2 className="text-xl font-bold">نتائج البحث</h2>
+        <div className="mt-14 flex items-end justify-between border-b border-border pb-4">
+          <h2 className="display-3">نتائج البحث</h2>
           <span className="text-sm text-muted-foreground tnum">{filtered.length} منتج</span>
         </div>
 
+
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
+          {filtered.map((p, i) => (
             <Link
               key={p.id}
               to="/products/$category/$id"
               params={{ category: p.category, id: p.id }}
-              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition hover:border-primary hover:shadow-card"
+              className="group reveal-on-scroll hover-lift relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:border-primary/60"
+              style={{ transitionDelay: `${(i % 6) * 60}ms` }}
             >
-              <div className="flex items-center justify-between">
+              <span
+                className="absolute inset-y-0 start-0 w-1 opacity-70"
+                style={{ background: p.brandColor ?? "var(--color-primary)" }}
+              />
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-[11px] font-semibold tracking-[0.18em] text-primary uppercase">
                   {PRODUCT_CATEGORIES.find((c) => c.slug === p.category)?.title}
                 </span>
-                {p.badge && <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.badge}</span>}
+                {(p.listBadge ?? p.badge) && (
+                  <span className="rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold text-gold">{p.listBadge ?? p.badge}</span>
+                )}
               </div>
-              <h3 className="mt-4 text-lg font-bold leading-snug">{p.name}</h3>
+              <h3 className="mt-4 text-lg font-bold leading-snug transition group-hover:text-primary">{p.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-              <p className="mt-4 flex-1 text-sm leading-7 text-foreground/80">{p.description}</p>
-              <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border pt-4">
+              <p className="mt-3 flex-1 text-sm leading-7 text-foreground/80">{p.description}</p>
+              <div className="mt-4 flex flex-wrap items-center gap-1.5 border-t border-border pt-4">
                 {p.cropTags.map((t) => (
-                  <span key={t} className="rounded-full bg-secondary px-2.5 py-1 text-[11px] text-foreground/70">{t}</span>
+                  <span key={t} className="chip">{t}</span>
                 ))}
+                <span className="ms-auto text-sm text-primary opacity-0 transition group-hover:opacity-100">←</span>
               </div>
             </Link>
           ))}
         </div>
+
       </section>
     </>
   );
