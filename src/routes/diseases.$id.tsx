@@ -47,8 +47,11 @@ function DiseaseDetail() {
   return (
     <>
       {/* HEADER */}
-      <section className="border-b border-border bg-secondary/40">
-        <div className="container-x py-8 sm:py-12">
+      <section className="relative overflow-hidden border-b border-border bg-secondary/30">
+        <div className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <div className="pointer-events-none absolute inset-0 bg-dots opacity-50" />
+        <div className="container-x relative py-8 sm:py-12">
+
           <Link to="/diseases" className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary">
             <span className="inline-block">→</span> العودة إلى مركز الأمراض
           </Link>
