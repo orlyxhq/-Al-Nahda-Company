@@ -299,17 +299,35 @@ function DiseaseDetail() {
   );
 }
 
+const SECTION_TONE: Record<string, { bar: string; bg: string }> = {
+  overview:   { bar: "bg-primary",       bg: "bg-card/60" },
+  visual:     { bar: "bg-gold",          bg: "bg-gold/[0.04]" },
+  lifecycle:  { bar: "bg-earth",         bg: "bg-secondary/40" },
+  symptoms:   { bar: "bg-gold",          bg: "bg-gold/[0.05]" },
+  causes:     { bar: "bg-earth",         bg: "bg-card/60" },
+  risk:       { bar: "bg-destructive",   bg: "bg-destructive/[0.04]" },
+  soil:       { bar: "bg-clay",          bg: "bg-secondary/40" },
+  prevention: { bar: "bg-primary",       bg: "bg-primary/[0.05]" },
+  treatment:  { bar: "bg-primary-deep",  bg: "bg-card/60" },
+};
+
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  const tone = SECTION_TONE[id] ?? { bar: "bg-primary", bg: "bg-card/60" };
   return (
-    <section id={id} className="scroll-mt-28 rounded-2xl border border-border bg-card/60 p-5 sm:p-6 shadow-sm">
+    <section
+      id={id}
+      className={`reveal-on-scroll scroll-mt-28 rounded-2xl border border-border p-5 shadow-crisp transition sm:p-6 ${tone.bg}`}
+    >
       <div className="flex items-center gap-3">
-        <span className="inline-block h-6 w-1.5 rounded-full bg-primary" />
+        <span className={`inline-block h-6 w-1.5 rounded-full ${tone.bar}`} />
         <h2 className="font-display text-xl sm:text-2xl font-bold text-ink">{title}</h2>
+        <span className="ms-3 hidden h-px flex-1 bg-border sm:block" />
       </div>
       <div className="mt-4">{children}</div>
     </section>
   );
 }
+
 
 function ChecklistGrid({ items, tone }: { items: string[]; tone: "warning" | "success" | "neutral" }) {
   const color =
